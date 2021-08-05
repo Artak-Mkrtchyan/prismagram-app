@@ -8,21 +8,14 @@ import {
   useLogUserIn,
   useLogUserOut,
 } from "../AuthContext";
+import { AuthNavigation } from "../navigation/AuthNavigation";
+import { MainNavigation } from "../navigation/MainNavigation";
+import { TabNavigation } from "../navigation/TabNavigation";
 
 export const NavController = () => {
   const isLoggedIn = useIsLoggedIn();
   const logUserIn = useLogUserIn();
   const logUserOut = useLogUserOut();
 
-  return <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    {isLoggedIn ? (
-      <TouchableOpacity onPress={() => logUserOut()}>
-        <Text>Log out</Text>
-      </TouchableOpacity>
-    ) : (
-      <TouchableOpacity onPress={() => logUserIn()}>
-        <Text>Log in</Text>
-      </TouchableOpacity>
-    )}
-  </View>;
+  return isLoggedIn ? <MainNavigation /> : <AuthNavigation />;
 };
