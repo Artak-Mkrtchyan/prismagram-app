@@ -23,9 +23,10 @@ export const AuthProvider = ({
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(isLoggedInProp);
 
-  const logUserIn = async () => {
+  const logUserIn = async (token: string) => {
     try {
       await AsyncStorage.setItem("isLoggedIn", "true");
+      await AsyncStorage.setItem("jwt", token);
       setIsLoggedIn(true);
     } catch (e) {
       console.error(e);

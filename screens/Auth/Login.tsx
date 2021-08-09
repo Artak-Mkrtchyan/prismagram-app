@@ -45,10 +45,10 @@ export const Login = ({
       } = await requestSecretMutation();
       if (requestSecret) {
         Alert.alert("Check your email");
-        navigation.navigate("Confirm");
-      } else { 
-        Alert.alert('Account not found');
-        navigation.navigate("SignUp")
+        navigation.navigate("Confirm", { email: value });
+      } else {
+        Alert.alert("Account not found");
+        navigation.navigate("SignUp", { email: value });
       }
     } catch (e) {
       Alert.alert("Can't login now");
