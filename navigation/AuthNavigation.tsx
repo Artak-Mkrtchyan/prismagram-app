@@ -13,7 +13,7 @@ const StackNavigation = createStackNavigator();
 export const AuthNavigation = () => {
   return (
     <NavigationContainer>
-      <StackNavigation.Navigator>
+      <StackNavigation.Navigator screenOptions={{headerShown: false}}>
         <StackNavigation.Screen name="AuthHome" component={AuthHome} />
         <StackNavigation.Screen name="SignUp" component={SignUp} />
         <StackNavigation.Screen name="Login" component={Login} />
