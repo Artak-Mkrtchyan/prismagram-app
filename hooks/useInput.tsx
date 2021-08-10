@@ -7,5 +7,5 @@ export const useInput = (initialValue: string) => {
     setValue(text);
   };
 
-  return { value, onChange };
+  return { value, onChange, setValue };
 };

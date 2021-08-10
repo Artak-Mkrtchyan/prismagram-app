@@ -7,6 +7,7 @@ import { AuthButton } from "../../components/AuthButton";
 import { AuthInput } from "../../components/AuthInput";
 import { useInput } from "../../hooks/useInput";
 import { LOG_IN } from "./AuthQueries";
+import { RouteProp } from "@react-navigation/native";
 
 const StyledView = styled.View`
   justify-content: center;
@@ -14,12 +15,21 @@ const StyledView = styled.View`
   flex: 1;
 `;
 
+type ParamList = {
+  Login: {
+    email: string;
+  };
+};
+
+
 export const Login = ({
   navigation,
+  route
 }: {
+  route: RouteProp<ParamList, "Login">;
   navigation: StackNavigationProp<{}>;
 }) => {
-  const emailInput = useInput("");
+  const emailInput = useInput(route.params.email);
   const [loading, setLoading] = useState<boolean>(false);
   const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: {
