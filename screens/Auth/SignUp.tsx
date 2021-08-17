@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { Alert, Keyboard, Text, TouchableWithoutFeedback } from "react-native";
-import styled from "styled-components/native";
-import * as Facebook from "expo-facebook";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { AuthButton } from "../../components/AuthButton";
-import { AuthInput } from "../../components/AuthInput";
-import { useInput } from "../../hooks/useInput";
-import { CREATE_ACCOUNT, LOG_IN } from "./AuthQueries";
+import * as Facebook from 'expo-facebook';
+import * as Google from 'expo-google-app-auth';
+import React, { useState } from 'react';
+import { Alert, Keyboard, Text, TouchableWithoutFeedback } from 'react-native';
+import styled from 'styled-components/native';
+
+import { useMutation } from '@apollo/client';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+import { AuthButton } from '../../components/AuthButton';
+import { AuthInput } from '../../components/AuthInput';
+import { useInput } from '../../hooks/useInput';
+import { CREATE_ACCOUNT, LOG_IN } from './AuthQueries';
 
 const View = styled.View`
   justify-content: center;
@@ -84,6 +87,38 @@ export const SignUp = ({
     usernameInput.setValue(username);
   };
 
+  const googleLogin = async () => {
+    const google_ios_client_id =
+      "30782463120-8uk7usvqb1gbbt7p9u5pg8lo78qeqgvv.apps.googleusercontent.com";
+
+    try {
+      setLoading(true);
+      const result = await Google.logInAsync({
+        iosClientId: google_ios_client_id,
+        scopes: ["profile", "email"],
+      });
+
+      if (result.type === "success") {
+        const userInfoResponse = await fetch(
+          "https://www.googleapis.com/userinfo/v2/me",
+          {
+            headers: { Authorization: `Bearer ${result.accessToken}` },
+          }
+        );
+        const { email, family_name, given_name } =
+          await userInfoResponse.json();
+
+        updateFormData(email, given_name, family_name);
+      } else {
+        return { cancelled: true };
+      }
+    } catch (e) {
+      return { error: true };
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const fbLogin = async () => {
     try {
       setLoading(true);
@@ -99,7 +134,7 @@ export const SignUp = ({
           `https://graph.facebook.com/me?access_token=${token}&fields=id,last_name,first_name,email`
         );
         const { email, first_name, last_name } = await response.json();
-        updateFormData(email, first_name, last_name)
+        updateFormData(email, first_name, last_name);
         Alert.alert("Logged in!", `Hi ${(await response.json()).name}!`);
         setLoading(false);
       } else {
@@ -141,18 +176,19 @@ export const SignUp = ({
           autoCorrect={false}
           autoCapitalize="words"
         />
-        <AuthButton
-          bgColor={"#2D4DA7"}
-          loading={loading}
-          text="Sign Up"
-          onPress={handleSignUp}
-        />
+        <AuthButton loading={loading} text="Sign Up" onPress={handleSignUp} />
         <FBContainer>
           <AuthButton
             bgColor={"#2D4DA7"}
             loading={false}
             onPress={fbLogin}
             text="Connect Facebook"
+          />
+          <AuthButton
+            bgColor={"#EE1922"}
+            loading={false}
+            onPress={googleLogin}
+            text="Connect Google"
           />
         </FBContainer>
       </View>

@@ -1,31 +1,21 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import AppLoading from "expo-app-loading";
-import { Text, TouchableOpacity, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
-import { useEffect } from "react";
-import * as Font from "expo-font";
+import { AsyncStorageWrapper, persistCache, PersistentStorage } from 'apollo3-cache-persist';
+import { PersistedData } from 'apollo3-cache-persist/lib/types';
+import AppLoading from 'expo-app-loading';
+import { Asset } from 'expo-asset';
+import * as Font from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect, useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { ThemeProvider } from 'styled-components';
 
-import { Asset } from "expo-asset";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  persistCache,
-  AsyncStorageWrapper,
-  PersistentStorage,
-} from "apollo3-cache-persist";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  NormalizedCacheObject,
-} from "@apollo/client";
-import { apolloClientOptions } from "./apollo";
-import { theme } from "./styles";
-import { PersistedData } from "apollo3-cache-persist/lib/types";
-import { ThemeProvider } from "styled-components";
-import { NavController } from "./components/NavController";
-import { AuthProvider } from "./AuthContext";
+import { ApolloClient, ApolloProvider, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { apolloClientOptions } from './apollo';
+import { AuthProvider } from './AuthContext';
+import { NavController } from './components/NavController';
+import { theme } from './styles';
 
 export default function App() {
   const [loaded, setLoaded] = useState<boolean>(false);
