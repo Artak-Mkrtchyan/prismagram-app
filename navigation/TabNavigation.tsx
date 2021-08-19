@@ -12,15 +12,118 @@ import { Home } from '../screens/Tab/Home';
 import { Notification } from '../screens/Tab/Notification';
 import { Profile } from '../screens/Tab/Profile';
 import { Search } from '../screens/Tab/Search';
+import { BottomTabNavigationRoutes, stackStyles } from './config';
 
 const BottomTabNavigator = createBottomTabNavigator();
 const StackNavigation = createStackNavigator();
+
+const HomeStackNavigator = () => {
+  return (
+    <StackNavigation.Navigator>
+      <StackNavigation.Screen
+        options={({ navigation }) => ({
+          headerRight: () => <MessagesLink navigation={navigation} />,
+          headerStyle: { backgroundColor: stackStyles.backgroundColor },
+          headerTitle: () => (
+            <Image
+              style={{ height: 35 }}
+              resizeMode="contain"
+              source={require("../assets/logo.png")}
+            />
+          ),
+          headerTitleContainerStyle: {
+            width: Platform.OS === "ios" ? "60%" : "75%",
+            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+          },
+        })}
+        name="HomeStack"
+        component={Home}
+      />
+    </StackNavigation.Navigator>
+  );
+};
+const SearchStackNavigator = () => {
+  return (
+    <StackNavigation.Navigator>
+      <StackNavigation.Screen
+        options={({ navigation }) => ({
+          headerRight: () => <MessagesLink navigation={navigation} />,
+          headerStyle: { backgroundColor: stackStyles.backgroundColor },
+          headerTitle: () => (
+            <Image
+              style={{ height: 35 }}
+              resizeMode="contain"
+              source={require("../assets/logo.png")}
+            />
+          ),
+          headerTitleContainerStyle: {
+            width: Platform.OS === "ios" ? "60%" : "75%",
+            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+          },
+        })}
+        name="SearchStack"
+        component={Search}
+      />
+    </StackNavigation.Navigator>
+  );
+};
+const NotificationStackNavigator = () => {
+  return (
+    <StackNavigation.Navigator>
+      <StackNavigation.Screen
+        options={({ navigation }) => ({
+          headerRight: () => <MessagesLink navigation={navigation} />,
+          headerStyle: { backgroundColor: stackStyles.backgroundColor },
+          headerTitle: () => (
+            <Image
+              style={{ height: 35 }}
+              resizeMode="contain"
+              source={require("../assets/logo.png")}
+            />
+          ),
+          headerTitleContainerStyle: {
+            width: Platform.OS === "ios" ? "60%" : "75%",
+            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+          },
+        })}
+        name="NotificationStack"
+        component={Notification}
+      />
+    </StackNavigation.Navigator>
+  );
+};
+
+const ProfileStackNavigator = () => {
+  return (
+    <StackNavigation.Navigator>
+      <StackNavigation.Screen
+        options={({ navigation }) => ({
+          headerRight: () => <MessagesLink navigation={navigation} />,
+          headerStyle: { backgroundColor: stackStyles.backgroundColor },
+          headerTitle: () => (
+            <Image
+              style={{ height: 35 }}
+              resizeMode="contain"
+              source={require("../assets/logo.png")}
+            />
+          ),
+          headerTitleContainerStyle: {
+            width: Platform.OS === "ios" ? "60%" : "75%",
+            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+          },
+        })}
+        name="Profiletack"
+        component={Profile}
+      />
+    </StackNavigation.Navigator>
+  );
+};
 
 export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
-        name="HomeTab"
+        name={BottomTabNavigationRoutes.HOME}
         options={{
           tabBarStyle: {
             backgroundColor: "#FAFAFA",
@@ -36,32 +139,10 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
             />
           ),
         }}
-      >
-        {(props) => (
-          <StackNavigation.Navigator {...props}>
-            <StackNavigation.Screen
-              options={({ navigation }) => ({
-                headerRight: () => <MessagesLink navigation={navigation} />,
-                headerTitle: () => (
-                  <Image
-                    style={{ height: 35 }}
-                    resizeMode="contain"
-                    source={require("../assets/logo.png")}
-                  />
-                ),
-                headerTitleContainerStyle: {
-                  width: Platform.OS === "ios" ? "60%" : "75%",
-                  alignItems: Platform.OS === "ios" ? "center" : "flex-start",
-                },
-              })}
-              name="HomeStack"
-              component={Home}
-            />
-          </StackNavigation.Navigator>
-        )}
-      </BottomTabNavigator.Screen>
+        component={HomeStackNavigator}
+      />
       <BottomTabNavigator.Screen
-        name="SearchTab"
+        name={BottomTabNavigationRoutes.SEARCH}
         options={{
           headerShown: false,
           tabBarStyle: {
@@ -77,30 +158,8 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
             />
           ),
         }}
-      >
-        {(props) => (
-          <StackNavigation.Navigator {...props}>
-            <StackNavigation.Screen
-              options={({ navigation }) => ({
-                headerTitle: () => (
-                  <Image
-                    style={{ height: 35 }}
-                    resizeMode="contain"
-                    source={require("../assets/logo.png")}
-                  />
-                ),
-                headerTitleContainerStyle: {
-                  width: Platform.OS === "ios" ? "60%" : "75%",
-                  alignItems: Platform.OS === "ios" ? "center" : "flex-start",
-                },
-                headerRight: () => <MessagesLink navigation={navigation} />,
-              })}
-              name="SearchStack"
-              component={Search}
-            />
-          </StackNavigation.Navigator>
-        )}
-      </BottomTabNavigator.Screen>
+        component={SearchStackNavigator}
+      />
 
       <BottomTabNavigator.Screen
         options={({ navigation }) => ({
@@ -118,6 +177,7 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
             />
           ),
           headerRight: () => <MessagesLink navigation={navigation} />,
+          headerStyle: { backgroundColor: stackStyles.backgroundColor },
           headerTitleContainerStyle: {
             width: Platform.OS === "ios" ? "60%" : "75%",
             alignItems: Platform.OS === "ios" ? "center" : "flex-start",
@@ -138,7 +198,7 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
         component={Add}
       />
       <BottomTabNavigator.Screen
-        name="NotificationTab"
+        name={BottomTabNavigationRoutes.NOTIFICATION}
         options={{
           tabBarStyle: {
             backgroundColor: "#FAFAFA",
@@ -158,33 +218,11 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
             alignItems: Platform.OS === "ios" ? "center" : "flex-start",
           },
         }}
-      >
-        {(props) => (
-          <StackNavigation.Navigator {...props}>
-            <StackNavigation.Screen
-              options={({ navigation }) => ({
-                headerTitle: () => (
-                  <Image
-                    style={{ height: 35 }}
-                    resizeMode="contain"
-                    source={require("../assets/logo.png")}
-                  />
-                ),
-                headerRight: () => <MessagesLink navigation={navigation} />,
-                headerTitleContainerStyle: {
-                  width: Platform.OS === "ios" ? "60%" : "75%",
-                  alignItems: Platform.OS === "ios" ? "center" : "flex-start",
-                },
-              })}
-              name="NotificationStack"
-              component={Notification}
-            />
-          </StackNavigation.Navigator>
-        )}
-      </BottomTabNavigator.Screen>
+        component={NotificationStackNavigator}
+      />
 
       <BottomTabNavigator.Screen
-        name="ProfileTab"
+        name={BottomTabNavigationRoutes.PROFILE}
         options={{
           tabBarStyle: {
             backgroundColor: "#FAFAFA",
@@ -204,30 +242,8 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
             alignItems: Platform.OS === "ios" ? "center" : "flex-start",
           },
         }}
-      >
-        {(props) => (
-          <StackNavigation.Navigator {...props}>
-            <StackNavigation.Screen
-              options={({ navigation }) => ({
-                headerTitle: () => (
-                  <Image
-                    style={{ height: 35 }}
-                    resizeMode="contain"
-                    source={require("../assets/logo.png")}
-                  />
-                ),
-                headerRight: () => <MessagesLink navigation={navigation} />,
-                headerTitleContainerStyle: {
-                  width: Platform.OS === "ios" ? "60%" : "75%",
-                  alignItems: Platform.OS === "ios" ? "center" : "flex-start",
-                },
-              })}
-              name="ProfileStack"
-              component={Profile}
-            />
-          </StackNavigation.Navigator>
-        )}
-      </BottomTabNavigator.Screen>
+        component={ProfileStackNavigator}
+      />
     </BottomTabNavigator.Navigator>
   );
 };

@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { Text, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import React, { useEffect } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
+
+import { StackNavigationProp } from '@react-navigation/stack';
+
+import { MainNavigationRoutes } from '../../navigation/config';
 
 const StyledView = styled.View`
   justify-content: center;
@@ -16,14 +19,16 @@ export const Add = ({
 }) => {
   const { navigate } = navigation;
   useEffect(() => {
-    const unsubscribe = navigation.addListener("tabPress", e => {
+    const unsubscribe = navigation.addListener("tabPress", (e) => {
       e.preventDefault();
-      navigate("Photo");
+      navigate(MainNavigationRoutes.PHOTO);
     });
     return unsubscribe;
   }, [navigation]);
 
- return  <StyledView>
-    <Text>Add</Text>
-  </StyledView>
+  return (
+    <StyledView>
+      <Text>Add</Text>
+    </StyledView>
+  );
 };

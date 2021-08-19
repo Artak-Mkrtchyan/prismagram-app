@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { MainNavigationRoutes, stackStyles } from './config';
 import { MessageNavigation } from './MessageNavigation';
 import { PhotoNavigation } from './PhotoNavigation';
 import { TabNavigation } from './TabNavigation';
@@ -17,12 +18,18 @@ export const MainNavigation = () => {
           headerShown: false,
           presentation: "modal",
         }}
-        initialRouteName="Tab"
+        initialRouteName={MainNavigationRoutes.BOTTOM_TABS}
       >
-        <StackNavigation.Screen name="Tab" component={TabNavigation} />
-        <StackNavigation.Screen name="Photo" component={PhotoNavigation} />
         <StackNavigation.Screen
-          name="MessagesPage"
+          name={MainNavigationRoutes.BOTTOM_TABS}
+          component={TabNavigation}
+        />
+        <StackNavigation.Screen
+          name={MainNavigationRoutes.PHOTO}
+          component={PhotoNavigation}
+        />
+        <StackNavigation.Screen
+          name={MainNavigationRoutes.MESSAGES}
           component={MessageNavigation}
         />
       </StackNavigation.Navigator>
