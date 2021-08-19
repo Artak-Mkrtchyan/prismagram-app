@@ -9,12 +9,12 @@ const Container = styled.TouchableOpacity`
 `;
 
 export const MessagesLink = (props: any) => {
-  const { text, navigation } = props;
+  const { navigation } = props;
   return (
     <View>
       <Container
         onPress={() => {
-          navigation.navigate("Messages");
+          navigation.navigate("MessagesPage");
         }}
       >
         <NavIcon

@@ -15,13 +15,16 @@ export const MainNavigation = () => {
       <StackNavigation.Navigator
         screenOptions={{
           headerShown: false,
-          presentation: 'modal'
+          presentation: "modal",
         }}
         initialRouteName="Tab"
       >
         <StackNavigation.Screen name="Tab" component={TabNavigation} />
         <StackNavigation.Screen name="Photo" component={PhotoNavigation} />
-        <StackNavigation.Screen name="Messages" component={MessageNavigation} />
+        <StackNavigation.Screen
+          name="MessagesPage"
+          component={MessageNavigation}
+        />
       </StackNavigation.Navigator>
     </NavigationContainer>
   );
