@@ -22,6 +22,12 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
       <BottomTabNavigator.Screen
         name="HomeTab"
         options={{
+          tabBarStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          tabBarLabel: () => {
+            return null;
+          },
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <NavIcon
@@ -58,6 +64,12 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
         name="SearchTab"
         options={{
           headerShown: false,
+          tabBarStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          tabBarLabel: () => {
+            return null;
+          },
           tabBarIcon: ({ focused }) => (
             <NavIcon
               focused={focused}
@@ -77,6 +89,10 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
                     source={require("../assets/logo.png")}
                   />
                 ),
+                headerTitleContainerStyle: {
+                  width: Platform.OS === "ios" ? "60%" : "75%",
+                  alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+                },
                 headerRight: () => <MessagesLink navigation={navigation} />,
               })}
               name="SearchStack"
@@ -88,6 +104,12 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
 
       <BottomTabNavigator.Screen
         options={({ navigation }) => ({
+          tabBarStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          tabBarLabel: () => {
+            return null;
+          },
           headerTitle: () => (
             <Image
               style={{ height: 35 }}
@@ -118,6 +140,12 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
       <BottomTabNavigator.Screen
         name="NotificationTab"
         options={{
+          tabBarStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          tabBarLabel: () => {
+            return null;
+          },
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <NavIcon
@@ -125,6 +153,10 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
               name={Platform.OS === "ios" ? "ios-heart" : "md-heart"}
             />
           ),
+          headerTitleContainerStyle: {
+            width: Platform.OS === "ios" ? "60%" : "75%",
+            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+          },
         }}
       >
         {(props) => (
@@ -154,6 +186,12 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
       <BottomTabNavigator.Screen
         name="ProfileTab"
         options={{
+          tabBarStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          tabBarLabel: () => {
+            return null;
+          },
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <NavIcon
@@ -161,6 +199,10 @@ export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
               name={Platform.OS === "ios" ? "ios-person" : "md-person"}
             />
           ),
+          headerTitleContainerStyle: {
+            width: Platform.OS === "ios" ? "60%" : "75%",
+            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
+          },
         }}
       >
         {(props) => (
