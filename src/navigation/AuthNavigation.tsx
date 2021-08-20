@@ -1,12 +1,12 @@
 import React from 'react';
+import { AuthHome } from 'src/screens/Auth/AuthHome';
+import { Confirm } from 'src/screens/Auth/Confirm';
+import { Login } from 'src/screens/Auth/Login';
+import { SignUp } from 'src/screens/Auth/SignUp';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { AuthHome } from '../screens/Auth/AuthHome';
-import { Confirm } from '../screens/Auth/Confirm';
-import { Login } from '../screens/Auth/Login';
-import { SignUp } from '../screens/Auth/SignUp';
 import { AuthNavigationRoutes } from './config';
 
 const StackNavigation = createStackNavigator();

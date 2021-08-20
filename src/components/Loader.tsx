@@ -1,8 +1,8 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
+import { Layout } from 'src/constants/Layout';
 import styled from 'styled-components/native';
 
-import { Layout } from '../constants/Layout';
 import { theme } from '../styles';
 
 const Container = styled.View`

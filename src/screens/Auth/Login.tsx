@@ -1,13 +1,15 @@
-import { useMutation } from "@apollo/client";
-import React, { useState } from "react";
-import { Alert, Keyboard, Text, TouchableWithoutFeedback } from "react-native";
-import styled from "styled-components/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { AuthButton } from "../../components/AuthButton";
-import { AuthInput } from "../../components/AuthInput";
-import { useInput } from "../../hooks/useInput";
-import { LOG_IN } from "./AuthQueries";
-import { RouteProp } from "@react-navigation/native";
+import React, { useState } from 'react';
+import { Alert, Keyboard, Text, TouchableWithoutFeedback } from 'react-native';
+import { AuthButton } from 'src/components/AuthButton';
+import { AuthInput } from 'src/components/AuthInput';
+import { useInput } from 'src/hooks/useInput';
+import styled from 'styled-components/native';
+
+import { useMutation } from '@apollo/client';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+import { LOG_IN } from './AuthQueries';
 
 const StyledView = styled.View`
   justify-content: center;
@@ -21,10 +23,9 @@ type ParamList = {
   };
 };
 
-
 export const Login = ({
   navigation,
-  route
+  route,
 }: {
   route: RouteProp<ParamList, "Login">;
   navigation: StackNavigationProp<{}>;

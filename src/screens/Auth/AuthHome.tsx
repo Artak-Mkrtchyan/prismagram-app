@@ -1,9 +1,10 @@
-import React from "react";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { Text, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
-import { constants } from "../../constants";
-import { AuthButton } from "../../components/AuthButton";
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import { AuthButton } from 'src/components/AuthButton';
+import { constants } from 'src/constants/constants';
+import styled from 'styled-components/native';
+
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const View = styled.View`
   justify-content: center;
@@ -18,8 +19,6 @@ const Image = styled.Image`
 
 const Touchable = styled.TouchableOpacity``;
 
-
-
 const LoginLink = styled.View``;
 const LoginLinkText = styled.Text`
   color: ${(props) => props.theme.blueColor};
@@ -33,7 +32,10 @@ export const AuthHome = ({
 }) => (
   <View>
     <Image resizeMode="contain" source={require("../../assets/logo.png")} />
-    <AuthButton text='Create New Account' onPress={() => navigation.navigate("SignUp")} />
+    <AuthButton
+      text="Create New Account"
+      onPress={() => navigation.navigate("SignUp")}
+    />
     <Touchable onPress={() => navigation.navigate("Login")}>
       <LoginLink>
         <LoginLinkText>Login</LoginLinkText>

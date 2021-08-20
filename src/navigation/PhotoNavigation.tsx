@@ -1,11 +1,11 @@
 import React from 'react';
+import { SelectPhoto } from 'src/screens/Photo/SelectPhoto';
+import { TakePhoto } from 'src/screens/Photo/TakePhoto';
+import { UploadPhoto } from 'src/screens/Photo/UploadPhoto';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { SelectPhoto } from '../screens/Photo/SelectPhoto';
-import { TakePhoto } from '../screens/Photo/TakePhoto';
-import { UploadPhoto } from '../screens/Photo/UploadPhoto';
 import { PhotoNavigationRoutes, PhotoTabNavigationRoutes } from './config';
 
 const MaterialTopTabNavigator = createMaterialTopTabNavigator();

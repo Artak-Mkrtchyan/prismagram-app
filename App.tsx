@@ -6,16 +6,15 @@ import * as Font from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { apolloClientOptions } from 'src/apollo';
+import { AuthProvider } from 'src/AuthContext';
+import { NavController } from 'src/components/NavController';
+import { theme } from 'src/styles';
 import { ThemeProvider } from 'styled-components';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import { apolloClientOptions } from './apollo';
-import { AuthProvider } from './AuthContext';
-import { NavController } from './components/NavController';
-import { theme } from './styles';
 
 export default function App() {
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -27,7 +26,7 @@ export default function App() {
       await Font.loadAsync({
         ...Ionicons.font,
       });
-      await Asset.loadAsync([require("./assets/logo.png")]);
+      await Asset.loadAsync([require("src/assets/logo.png")]);
 
       const cache = new InMemoryCache({});
 
@@ -44,7 +43,7 @@ export default function App() {
       });
 
       const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
-      console.log('isLoggedIn',Boolean(isLoggedIn));
+      console.log("isLoggedIn", Boolean(isLoggedIn));
       setIsLoggedIn(Boolean(isLoggedIn));
 
       setClient(client);
@@ -62,7 +61,7 @@ export default function App() {
   return loaded && client ? (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        <AuthProvider isLoggedIn={isLoggedIn} >
+        <AuthProvider isLoggedIn={isLoggedIn}>
           <NavController />
         </AuthProvider>
       </ThemeProvider>

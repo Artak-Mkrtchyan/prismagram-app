@@ -2,14 +2,14 @@ import * as Facebook from 'expo-facebook';
 import * as Google from 'expo-google-app-auth';
 import React, { useState } from 'react';
 import { Alert, Keyboard, Text, TouchableWithoutFeedback } from 'react-native';
+import { AuthButton } from 'src/components/AuthButton';
+import { AuthInput } from 'src/components/AuthInput';
+import { useInput } from 'src/hooks/useInput';
 import styled from 'styled-components/native';
 
 import { useMutation } from '@apollo/client';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { AuthButton } from '../../components/AuthButton';
-import { AuthInput } from '../../components/AuthInput';
-import { useInput } from '../../hooks/useInput';
 import { CREATE_ACCOUNT, LOG_IN } from './AuthQueries';
 
 const View = styled.View`

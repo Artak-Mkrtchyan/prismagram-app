@@ -1,7 +1,9 @@
-import React from "react";
-import { KeyboardTypeOptions, NativeSyntheticEvent, ReturnKeyTypeOptions, TextInputEndEditingEventData } from "react-native";
-import styled from "styled-components/native";
-import { constants } from "../constants";
+import React from 'react';
+import {
+    KeyboardTypeOptions, NativeSyntheticEvent, ReturnKeyTypeOptions, TextInputEndEditingEventData
+} from 'react-native';
+import { constants } from 'src/constants/constants';
+import styled from 'styled-components/native';
 
 const Container = styled.View`
   margin-bottom: 10px;
@@ -23,7 +25,7 @@ export const AuthInput = ({
   returnKeyType = "none",
   onChange,
   autoCorrect = true,
-  onSubmitEditing = () => null
+  onSubmitEditing = () => null,
 }: {
   placeholder: string;
   value: string;
@@ -32,7 +34,9 @@ export const AuthInput = ({
   returnKeyType?: ReturnKeyTypeOptions;
   autoCorrect?: boolean;
   onChange: (text: string) => void;
-  onSubmitEditing?: (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void;
+  onSubmitEditing?: (
+    e: NativeSyntheticEvent<TextInputEndEditingEventData>
+  ) => void;
 }) => {
   return (
     <Container>

@@ -1,11 +1,12 @@
-import React from "react";
-import { ActivityIndicator } from "react-native";
-import styled from "styled-components/native";
-import { constants } from "../constants";
+import React from 'react';
+import { ActivityIndicator } from 'react-native';
+import { constants } from 'src/constants/constants';
+import styled from 'styled-components/native';
 
 const Touchable = styled.TouchableOpacity``;
 const Container = styled.View`
-  background-color: ${(props) => props.bgColor ? props.bgColor : props.theme.blueColor};
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : props.theme.blueColor};
   padding: 10px;
   margin: 0px 50px;
   border-radius: 4px;

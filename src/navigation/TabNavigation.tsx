@@ -1,17 +1,17 @@
 import React from 'react';
 import { Image, Platform } from 'react-native';
+import { MessagesLink } from 'src/components/MessagesLink';
+import { NavIcon } from 'src/components/NavIcon';
+import { Add } from 'src/screens/Tab/Add';
+import { Home } from 'src/screens/Tab/Home';
+import { Notification } from 'src/screens/Tab/Notification';
+import { Profile } from 'src/screens/Tab/Profile';
+import { Search } from 'src/screens/Tab/Search';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Route, RouteProp } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MessagesLink } from '../components/MessagesLink';
-import { NavIcon } from '../components/NavIcon';
-import { Add } from '../screens/Tab/Add';
-import { Home } from '../screens/Tab/Home';
-import { Notification } from '../screens/Tab/Notification';
-import { Profile } from '../screens/Tab/Profile';
-import { Search } from '../screens/Tab/Search';
 import { BottomTabNavigationRoutes, stackStyles } from './config';
 
 const BottomTabNavigator = createBottomTabNavigator();
