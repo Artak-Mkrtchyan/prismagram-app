@@ -13,7 +13,7 @@ export enum BottomTabNavigationRoutes {
 export enum MainNavigationRoutes {
   BOTTOM_TABS = "BOTTOM_TABS",
   PHOTO = "PHOTO",
-  MESSAGES = "MESSAGES",
+  MESSAGES_PAGE = "MESSAGES_PAGE",
 }
 
 export enum AuthNavigationRoutes {

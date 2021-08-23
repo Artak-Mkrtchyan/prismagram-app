@@ -1,5 +1,6 @@
 import React from 'react';
 import { Platform, View } from 'react-native';
+import { MainNavigationRoutes } from 'src/navigation/config';
 import styled from 'styled-components/native';
 
 import { NavIcon } from './NavIcon';
@@ -14,7 +15,7 @@ export const MessagesLink = (props: any) => {
     <View>
       <Container
         onPress={() => {
-          navigation.navigate("MessagesPage");
+          navigation.navigate(MainNavigationRoutes.MESSAGES_PAGE);
         }}
       >
         <NavIcon

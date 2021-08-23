@@ -29,7 +29,7 @@ export const MainNavigation = () => {
           component={PhotoNavigation}
         />
         <StackNavigation.Screen
-          name={MainNavigationRoutes.MESSAGES}
+          name={MainNavigationRoutes.MESSAGES_PAGE}
           component={MessageNavigation}
         />
       </StackNavigation.Navigator>
