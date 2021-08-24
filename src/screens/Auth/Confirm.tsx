@@ -3,6 +3,7 @@ import { Alert, Keyboard, Text, TouchableWithoutFeedback } from 'react-native';
 import { AuthButton } from 'src/components/AuthButton';
 import { AuthInput } from 'src/components/AuthInput';
 import { useInput } from 'src/hooks/useInput';
+import { AuthNavigationRoutes } from 'src/navigation/config';
 import styled from 'styled-components/native';
 
 import { useMutation } from '@apollo/client';
@@ -19,7 +20,7 @@ const StyledView = styled.View`
 `;
 
 type ParamList = {
-  Confirm: {
+  [AuthNavigationRoutes.CONFIRM]: {
     email: string;
   };
 };
@@ -28,7 +29,7 @@ export const Confirm = ({
   navigation,
   route,
 }: {
-  route: RouteProp<ParamList, "Confirm">;
+  route: RouteProp<ParamList, AuthNavigationRoutes.CONFIRM>;
   navigation: StackNavigationProp<{}>;
 }) => {
   const confirmInput = useInput("");

@@ -12,7 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Route, RouteProp } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { BottomTabNavigationRoutes, stackStyles } from './config';
+import { BottomTabNavigationRoutes, MainNavigationRoutes, stackStyles } from './config';
 
 const BottomTabNavigator = createBottomTabNavigator();
 const StackNavigation = createStackNavigator();
@@ -119,7 +119,11 @@ const ProfileStackNavigator = () => {
   );
 };
 
-export const TabNavigation = ({ route }: { route: RouteProp<{}, "Tab"> }) => {
+export const TabNavigation = ({
+  route,
+}: {
+  route: RouteProp<{}, MainNavigationRoutes.BOTTOM_TABS>;
+}) => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen

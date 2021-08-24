@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { AuthButton } from 'src/components/AuthButton';
 import { constants } from 'src/constants/constants';
+import { AuthNavigationRoutes } from 'src/navigation/config';
 import styled from 'styled-components/native';
 
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -34,9 +35,9 @@ export const AuthHome = ({
     <Image resizeMode="contain" source={require("../../assets/logo.png")} />
     <AuthButton
       text="Create New Account"
-      onPress={() => navigation.navigate("SignUp")}
+      onPress={() => navigation.navigate(AuthNavigationRoutes.SIGNUP)}
     />
-    <Touchable onPress={() => navigation.navigate("Login")}>
+    <Touchable onPress={() => navigation.navigate(AuthNavigationRoutes.LOGIN)}>
       <LoginLink>
         <LoginLinkText>Login</LoginLinkText>
       </LoginLink>

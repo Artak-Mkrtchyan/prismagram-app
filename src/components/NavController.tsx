@@ -11,5 +11,5 @@ export const NavController = () => {
   const logUserIn = useLogUserIn();
   const logUserOut = useLogUserOut();
 
-  return !isLoggedIn ? <MainNavigation /> : <AuthNavigation />;
+  return isLoggedIn ? <MainNavigation /> : <AuthNavigation />;
 };

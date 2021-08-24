@@ -5,6 +5,7 @@ import { Alert, Keyboard, Text, TouchableWithoutFeedback } from 'react-native';
 import { AuthButton } from 'src/components/AuthButton';
 import { AuthInput } from 'src/components/AuthInput';
 import { useInput } from 'src/hooks/useInput';
+import { AuthNavigationRoutes } from 'src/navigation/config';
 import styled from 'styled-components/native';
 
 import { useMutation } from '@apollo/client';
@@ -64,12 +65,12 @@ export const SignUp = ({
       } = await createAccountMutation();
       if (createAccount) {
         Alert.alert("Account created", "Log in now!");
-        navigation.navigate("Login", { email });
+        navigation.navigate(AuthNavigationRoutes.LOGIN, { email });
       }
     } catch (e) {
       console.log(e);
       Alert.alert("Username taken.", "Log in instead");
-      navigation.navigate("Login", { email });
+      navigation.navigate(AuthNavigationRoutes.LOGIN, { email });
     } finally {
       setLoading(false);
     }
