@@ -3,6 +3,7 @@ import { Alert, Keyboard, Text, TouchableWithoutFeedback } from 'react-native';
 import { AuthButton } from 'src/components/AuthButton';
 import { AuthInput } from 'src/components/AuthInput';
 import { useInput } from 'src/hooks/useInput';
+import { AuthNavigationRoutes } from 'src/navigation/config';
 import styled from 'styled-components/native';
 
 import { useMutation } from '@apollo/client';
@@ -18,7 +19,7 @@ const StyledView = styled.View`
 `;
 
 type ParamList = {
-  Login: {
+  [AuthNavigationRoutes.LOGIN]: {
     email: string;
   };
 };
@@ -27,10 +28,11 @@ export const Login = ({
   navigation,
   route,
 }: {
-  route: RouteProp<ParamList, "Login">;
+  route: RouteProp<ParamList, AuthNavigationRoutes.LOGIN>;
   navigation: StackNavigationProp<{}>;
 }) => {
-  const emailInput = useInput(route.params.email);
+  const emailInput = useInput("");
+  console.log(route);
   const [loading, setLoading] = useState<boolean>(false);
   const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: {
@@ -56,12 +58,13 @@ export const Login = ({
       } = await requestSecretMutation();
       if (requestSecret) {
         Alert.alert("Check your email");
-        navigation.navigate("Confirm", { email: value });
+        navigation.navigate(AuthNavigationRoutes.CONFIRM, { email: value });
       } else {
         Alert.alert("Account not found");
-        navigation.navigate("SignUp", { email: value });
+        navigation.navigate(AuthNavigationRoutes.SIGNUP, { email: value });
       }
     } catch (e) {
+      console.warn(e);
       Alert.alert("Can't login now");
     } finally {
       setLoading(false);

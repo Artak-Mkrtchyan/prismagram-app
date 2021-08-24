@@ -37,12 +37,13 @@ export default function App() {
         >,
       });
 
+      const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
+
       const client = new ApolloClient({
         ...apolloClientOptions,
         cache: new InMemoryCache(),
       });
 
-      const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
       console.log("isLoggedIn", Boolean(isLoggedIn));
       setIsLoggedIn(Boolean(isLoggedIn));
 
