@@ -4,11 +4,11 @@ import { MessagesLink } from 'src/components/MessagesLink';
 import { NavIcon } from 'src/components/NavIcon';
 import { SearchBar } from 'src/components/SearchBar';
 import { SearchStackNavigator } from 'src/navigation/Search/SearchTab';
-import { Add } from 'src/screens/Tab/Add';
-import { Home } from 'src/screens/Tab/Home';
-import { Notification } from 'src/screens/Tab/Notification';
-import { Profile } from 'src/screens/Tab/Profile';
-import { Search } from 'src/screens/Tab/Search';
+import { Add } from 'src/screens/BottomTabs/Add';
+import { Home } from 'src/screens/BottomTabs/Home';
+import { Notification } from 'src/screens/BottomTabs/Notification';
+import { Profile } from 'src/screens/BottomTabs/Profile';
+import { SearchScreen } from 'src/screens/BottomTabs/Search/Search';
 
 import { gql, useQuery } from '@apollo/client';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';

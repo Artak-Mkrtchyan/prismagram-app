@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { SearchBar } from 'src/components/SearchBar';
 import { stackStyles } from 'src/navigation/config';
 import { SEARCH } from 'src/navigation/TabNavigation';
-import { Search } from 'src/screens/Tab/Search';
+import { SearchScreen } from 'src/screens/BottomTabs/Search';
 
 import { useQuery } from '@apollo/client';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -28,7 +28,11 @@ export const SearchStackNavigator = ({ navigation }: { navigation: any }) => {
   };
 
   const SearchComponent = () => (
-    <Search term={searchInput} shouldFetch={fetchTrigger} />
+    <SearchScreen
+      navigation={navigation}
+      term={searchInput}
+      shouldFetch={fetchTrigger}
+    />
   );
 
   return (

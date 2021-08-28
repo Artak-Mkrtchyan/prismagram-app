@@ -14,7 +14,7 @@ export const SquarePhoto = ({
   }[];
   id: string;
 }) => (
-  <TouchableOpacity onPress={() => {}}>
+  <TouchableOpacity onPress={() => navigation.navigate("Detail", { id })}>
     <Image
       source={{ uri: files[0].url }}
       style={{ width: constants.width / 3, height: constants.height / 6 }}
