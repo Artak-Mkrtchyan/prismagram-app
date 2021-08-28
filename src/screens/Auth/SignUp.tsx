@@ -68,7 +68,6 @@ export const SignUp = ({
         navigation.navigate(AuthNavigationRoutes.LOGIN, { email });
       }
     } catch (e) {
-      console.log(e);
       Alert.alert("Username taken.", "Log in instead");
       navigation.navigate(AuthNavigationRoutes.LOGIN, { email });
     } finally {

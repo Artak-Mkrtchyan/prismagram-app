@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Platform } from 'react-native';
 import { MessagesLink } from 'src/components/MessagesLink';
 import { NavIcon } from 'src/components/NavIcon';
+import { SearchBar } from 'src/components/SearchBar';
+import { SearchStackNavigator } from 'src/navigation/Search/SearchTab';
 import { Add } from 'src/screens/Tab/Add';
 import { Home } from 'src/screens/Tab/Home';
 import { Notification } from 'src/screens/Tab/Notification';
 import { Profile } from 'src/screens/Tab/Profile';
 import { Search } from 'src/screens/Tab/Search';
 
+import { gql, useQuery } from '@apollo/client';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Route, RouteProp } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -42,31 +45,21 @@ const HomeStackNavigator = () => {
     </StackNavigation.Navigator>
   );
 };
-const SearchStackNavigator = () => {
-  return (
-    <StackNavigation.Navigator>
-      <StackNavigation.Screen
-        options={({ navigation }) => ({
-          headerRight: () => <MessagesLink navigation={navigation} />,
-          headerStyle: { backgroundColor: stackStyles.backgroundColor },
-          headerTitle: () => (
-            <Image
-              style={{ height: 35 }}
-              resizeMode="contain"
-              source={require("../assets/logo.png")}
-            />
-          ),
-          headerTitleContainerStyle: {
-            width: Platform.OS === "ios" ? "60%" : "75%",
-            alignItems: Platform.OS === "ios" ? "center" : "flex-start",
-          },
-        })}
-        name="SearchStack"
-        component={Search}
-      />
-    </StackNavigation.Navigator>
-  );
-};
+
+export const SEARCH = gql`
+  query search($term: String!) {
+    searchPost(term: $term) {
+      id
+      files {
+        id
+        url
+      }
+      likeCount
+      commentCount
+    }
+  }
+`;
+
 const NotificationStackNavigator = () => {
   return (
     <StackNavigation.Navigator>

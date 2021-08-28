@@ -20,7 +20,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const authLink = setContext(async (_, { headers }) => {
   const token = await AsyncStorage.getItem("jwt");
-  console.log("--> request update -->", token);
+
   return {
     headers: {
       ...headers,
