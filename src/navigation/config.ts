@@ -18,6 +18,10 @@ export enum BottomTabNavigationRoutes {
   PROFILE = "Profile",
 }
 
+export enum CommonNavigationRoutes {
+  DETAIL = "Detail",
+}
+
 export enum MainNavigationRoutes {
   BOTTOM_TABS = "Bottom_tabs",
   PHOTO = "Photo",

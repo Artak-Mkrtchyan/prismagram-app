@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Image, Platform } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { constants } from 'src/constants/constants';
+import { BottomTabNavigationRoutes } from 'src/navigation/config';
 import { theme } from 'src/styles';
 import styled from 'styled-components/native';
 
 import { gql, useMutation } from '@apollo/client';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 export const TOGGLE_LIKE = gql`
@@ -60,7 +62,6 @@ export const Post = ({
   caption,
   comments = [],
   isLiked: isLikedProp,
-  navigation,
 }: {
   id: string;
   user: {
@@ -85,8 +86,8 @@ export const Post = ({
   caption: string;
   location?: string;
   createdAt: string;
-  navigation: StackNavigationProp<{}>;
 }) => {
+  const navigation = useNavigation();
   const [isLiked, setIsLiked] = useState(isLikedProp);
   const [likeCount, setLikeCount] = useState(likeCountProp);
   const [toggleLikeMutaton] = useMutation(TOGGLE_LIKE, {
@@ -111,9 +112,10 @@ export const Post = ({
     <Container>
       <Header>
         <Touchable
-          onPress={
-            () => {}
-            // navigation.navigate("UserDetail", { username: user.username })
+          onPress={() =>
+            navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
+              username: user.username,
+            })
           }
         >
           <Image
@@ -122,9 +124,10 @@ export const Post = ({
           />
         </Touchable>
         <Touchable
-          onPress={
-            () => {}
-            // navigation.navigate("UserDetail", { username: user.username })
+          onPress={() =>
+            navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
+              username: user.username,
+            })
           }
         >
           <HeaderUserContainer>

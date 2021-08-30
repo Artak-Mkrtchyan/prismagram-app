@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Image, Platform } from 'react-native';
 import { MessagesLink } from 'src/components/MessagesLink';
 import { NavIcon } from 'src/components/NavIcon';
+import { ProfileComponent } from 'src/components/Profile';
 import { SearchBar } from 'src/components/SearchBar';
 import { SearchStackNavigator } from 'src/navigation/Search/SearchTab';
 import { Add } from 'src/screens/BottomTabs/Add';
 import { Home } from 'src/screens/BottomTabs/Home';
 import { Notification } from 'src/screens/BottomTabs/Notification';
-import { Profile } from 'src/screens/BottomTabs/Profile';
+import { ProfileScreen } from 'src/screens/BottomTabs/Profile/Profile';
+import { ProfileScreenProp } from 'src/screens/BottomTabs/Profile/types';
 import { SearchScreen } from 'src/screens/BottomTabs/Search/Search';
 
 import { gql, useQuery } from '@apollo/client';
@@ -42,6 +44,7 @@ const HomeStackNavigator = () => {
         name="HomeStack"
         component={Home}
       />
+      <StackNavigation.Screen name="Profile" component={ProfileComponent} />
     </StackNavigation.Navigator>
   );
 };
@@ -106,7 +109,7 @@ const ProfileStackNavigator = () => {
           },
         })}
         name="Profiletack"
-        component={Profile}
+        component={ProfileScreen}
       />
     </StackNavigation.Navigator>
   );

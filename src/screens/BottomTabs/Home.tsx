@@ -2,37 +2,9 @@ import React, { useState } from 'react';
 import { RefreshControl, ScrollView } from 'react-native';
 import { Loader } from 'src/components/Loader';
 import { Post } from 'src/components/Post';
-import styled from 'styled-components/native';
+import { POST_FRAGMENT } from 'src/fragments/post';
 
 import { gql, useQuery } from '@apollo/client';
-
-export const POST_FRAGMENT = gql`
-  fragment PostParts on Post {
-    id
-    location
-    caption
-    user {
-      id
-      avatar
-      username
-    }
-    files {
-      id
-      url
-    }
-    likeCount
-    isLiked
-    comments {
-      id
-      text
-      user {
-        id
-        username
-      }
-    }
-    createdAt
-  }
-`;
 
 export const FEED_QUERY = gql`
   {
