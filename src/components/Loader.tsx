@@ -13,9 +13,9 @@ const Container = styled.View`
 `;
 
 export const Loader = () => {
-  return (
-    <Container>
-      <ActivityIndicator color={theme.darkGreyColor} />
-    </Container>
-  );
+	return (
+		<Container>
+			<ActivityIndicator color={theme.darkGreyColor} />
+		</Container>
+	);
 };

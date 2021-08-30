@@ -1,5 +1,5 @@
 export const stackStyles = {
-  backgroundColor: "#FAFAFA",
+	backgroundColor: '#FAFAFA',
 };
 
 export type BottomTabStackParamList = {
@@ -11,41 +11,41 @@ export type BottomTabStackParamList = {
 };
 
 export enum BottomTabNavigationRoutes {
-  HOME = "Home",
-  SEARCH = "Search",
-  ADD = "Add",
-  NOTIFICATION = "Notification",
-  PROFILE = "Profile",
+  HOME = 'Home',
+  SEARCH = 'Search',
+  ADD = 'Add',
+  NOTIFICATION = 'Notification',
+  PROFILE = 'Profile',
 }
 
 export enum CommonNavigationRoutes {
-  DETAIL = "Detail",
+  DETAIL = 'Detail',
 }
 
 export enum MainNavigationRoutes {
-  BOTTOM_TABS = "Bottom_tabs",
-  PHOTO = "Photo",
-  MESSAGES_PAGE = "Messages_page",
+  BOTTOM_TABS = 'Bottom_tabs',
+  PHOTO = 'Photo',
+  MESSAGES_PAGE = 'Messages_page',
 }
 
 export enum AuthNavigationRoutes {
-  HOME = "Home",
-  SIGNUP = "Signup",
-  LOGIN = "Login",
-  CONFIRM = "Confirm",
+  HOME = 'Home',
+  SIGNUP = 'Signup',
+  LOGIN = 'Login',
+  CONFIRM = 'Confirm',
 }
 
 export enum MessageNavigationRoutes {
-  MESSAGE = "Message",
-  MESSAGES = "Messages",
+  MESSAGE = 'Message',
+  MESSAGES = 'Messages',
 }
 
 export enum PhotoNavigationRoutes {
-  PHOTO_TAB = "Photo_tab",
-  UPLOAD_PHOTO = "Upload_photo",
+  PHOTO_TAB = 'Photo_tab',
+  UPLOAD_PHOTO = 'Upload_photo',
 }
 
 export enum PhotoTabNavigationRoutes {
-  SELECT_PHOTO = "Select_photo",
-  TAKE_PHOTO = "Take_photo",
+  SELECT_PHOTO = 'Select_photo',
+  TAKE_PHOTO = 'Take_photo',
 }

@@ -12,20 +12,20 @@ import { TabNavigation } from './TabNavigation';
 const StackNavigation = createStackNavigator();
 
 export const MessageNavigation = () => {
-  return (
-    <StackNavigation.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <StackNavigation.Screen
-        name={MessageNavigationRoutes.MESSAGE}
-        component={Message}
-      />
-      <StackNavigation.Screen
-        name={MessageNavigationRoutes.MESSAGES}
-        component={Messages}
-      />
-    </StackNavigation.Navigator>
-  );
+	return (
+		<StackNavigation.Navigator
+			screenOptions={{
+				headerShown: false,
+			}}
+		>
+			<StackNavigation.Screen
+				name={MessageNavigationRoutes.MESSAGE}
+				component={Message}
+			/>
+			<StackNavigation.Screen
+				name={MessageNavigationRoutes.MESSAGES}
+				component={Messages}
+			/>
+		</StackNavigation.Navigator>
+	);
 };

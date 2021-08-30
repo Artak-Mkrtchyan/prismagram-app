@@ -1,7 +1,7 @@
-import React from "react";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { Text, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Text, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 
 const StyledView = styled.View`
   justify-content: center;
@@ -10,7 +10,7 @@ const StyledView = styled.View`
 `;
 
 export const Notification = () => (
-  <StyledView>
-    <Text>Notification</Text>
-  </StyledView>
+	<StyledView>
+		<Text>Notification</Text>
+	</StyledView>
 );

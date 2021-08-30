@@ -12,22 +12,22 @@ const StyledView = styled.View`
 `;
 
 export const Add = ({
-  navigation,
+	navigation,
 }: {
   navigation: StackNavigationProp<{}>;
 }) => {
-  const { navigate } = navigation;
-  useEffect(() => {
-    const unsubscribe = navigation.addListener("tabPress", (e) => {
-      e.preventDefault();
-      navigate(MainNavigationRoutes.PHOTO);
-    });
-    return unsubscribe;
-  }, [navigation]);
+	const { navigate } = navigation;
+	useEffect(() => {
+		const unsubscribe = navigation.addListener('tabPress', (e) => {
+			e.preventDefault();
+			navigate(MainNavigationRoutes.PHOTO);
+		});
+		return unsubscribe;
+	}, [navigation]);
 
-  return (
-    <StyledView>
-      <Text>Add</Text>
-    </StyledView>
-  );
+	return (
+		<StyledView>
+			<Text>Add</Text>
+		</StyledView>
+	);
 };

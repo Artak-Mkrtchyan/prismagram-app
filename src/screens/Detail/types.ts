@@ -1,5 +1,5 @@
 import {
-    BottomTabNavigationRoutes, BottomTabStackParamList, CommonNavigationRoutes
+	BottomTabNavigationRoutes, BottomTabStackParamList, CommonNavigationRoutes
 } from 'src/navigation/config';
 
 import { RouteProp } from '@react-navigation/native';

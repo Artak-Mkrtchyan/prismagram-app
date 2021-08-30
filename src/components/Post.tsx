@@ -54,14 +54,14 @@ const CommentCount = styled.Text`
 `;
 
 export const Post = ({
-  id,
-  user,
-  location,
-  files = [],
-  likeCount: likeCountProp,
-  caption,
-  comments = [],
-  isLiked: isLikedProp,
+	id,
+	user,
+	location,
+	files = [],
+	likeCount: likeCountProp,
+	caption,
+	comments = [],
+	isLiked: isLikedProp,
 }: {
   id: string;
   user: {
@@ -87,100 +87,100 @@ export const Post = ({
   location?: string;
   createdAt: string;
 }) => {
-  const navigation = useNavigation();
-  const [isLiked, setIsLiked] = useState(isLikedProp);
-  const [likeCount, setLikeCount] = useState(likeCountProp);
-  const [toggleLikeMutaton] = useMutation(TOGGLE_LIKE, {
-    variables: {
-      postId: id,
-    },
-  });
+	const navigation = useNavigation();
+	const [isLiked, setIsLiked] = useState(isLikedProp);
+	const [likeCount, setLikeCount] = useState(likeCountProp);
+	const [toggleLikeMutaton] = useMutation(TOGGLE_LIKE, {
+		variables: {
+			postId: id,
+		},
+	});
 
-  const handleLike = async () => {
-    if (isLiked === true) {
-      setLikeCount((l) => l - 1);
-    } else {
-      setLikeCount((l) => l + 1);
-    }
-    setIsLiked((p) => !p);
-    try {
-      await toggleLikeMutaton();
-    } catch (e) {}
-  };
+	const handleLike = async () => {
+		if (isLiked === true) {
+			setLikeCount((l) => l - 1);
+		} else {
+			setLikeCount((l) => l + 1);
+		}
+		setIsLiked((p) => !p);
+		try {
+			await toggleLikeMutaton();
+		} catch (e) {}
+	};
 
-  return (
-    <Container>
-      <Header>
-        <Touchable
-          onPress={() =>
-            navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
-              username: user.username,
-            })
-          }
-        >
-          <Image
-            style={{ height: 40, width: 40, borderRadius: 20 }}
-            source={{ uri: user.avatar }}
-          />
-        </Touchable>
-        <Touchable
-          onPress={() =>
-            navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
-              username: user.username,
-            })
-          }
-        >
-          <HeaderUserContainer>
-            <Bold>{user.username}</Bold>
-            <Location>{location}</Location>
-          </HeaderUserContainer>
-        </Touchable>
-      </Header>
-      <Swiper
-        showsPagination={false}
-        style={{ height: constants.height / 2.5 }}
-      >
-        {files.map((file) => (
-          <Image
-            style={{ width: constants.width, height: constants.height / 2.5 }}
-            key={file.id}
-            source={{ uri: file.url }}
-          />
-        ))}
-      </Swiper>
-      <InfoContainer>
-        <IconsContainer>
-          <Touchable onPress={handleLike}>
-            <IconContainer>
-              <Ionicons
-                size={24}
-                color={isLiked ? theme.redColor : theme.blackColor}
-                name={isLiked ? "ios-heart" : "md-heart"}
-              />
-            </IconContainer>
-          </Touchable>
-          <Touchable>
-            <IconContainer>
-              <Ionicons
-                color={theme.blackColor}
-                size={24}
-                name={
-                  Platform.OS === "ios" ? "ios-chatbubble" : "md-chatbubble"
-                }
-              />
-            </IconContainer>
-          </Touchable>
-        </IconsContainer>
-        <Touchable>
-          <Bold>{likeCount === 1 ? "1 like" : `${likeCount} likes`}</Bold>
-        </Touchable>
-        <Caption>
-          <Bold>{user.username}</Bold> {caption}
-        </Caption>
-        <Touchable>
-          <CommentCount>See all {comments.length} comments</CommentCount>
-        </Touchable>
-      </InfoContainer>
-    </Container>
-  );
+	return (
+		<Container>
+			<Header>
+				<Touchable
+					onPress={() =>
+						navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
+							username: user.username,
+						})
+					}
+				>
+					<Image
+						style={{ height: 40, width: 40, borderRadius: 20 }}
+						source={{ uri: user.avatar }}
+					/>
+				</Touchable>
+				<Touchable
+					onPress={() =>
+						navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
+							username: user.username,
+						})
+					}
+				>
+					<HeaderUserContainer>
+						<Bold>{user.username}</Bold>
+						<Location>{location}</Location>
+					</HeaderUserContainer>
+				</Touchable>
+			</Header>
+			<Swiper
+				showsPagination={false}
+				style={{ height: constants.height / 2.5 }}
+			>
+				{files.map((file) => (
+					<Image
+						style={{ width: constants.width, height: constants.height / 2.5 }}
+						key={file.id}
+						source={{ uri: file.url }}
+					/>
+				))}
+			</Swiper>
+			<InfoContainer>
+				<IconsContainer>
+					<Touchable onPress={handleLike}>
+						<IconContainer>
+							<Ionicons
+								size={24}
+								color={isLiked ? theme.redColor : theme.blackColor}
+								name={isLiked ? 'ios-heart' : 'md-heart'}
+							/>
+						</IconContainer>
+					</Touchable>
+					<Touchable>
+						<IconContainer>
+							<Ionicons
+								color={theme.blackColor}
+								size={24}
+								name={
+									Platform.OS === 'ios' ? 'ios-chatbubble' : 'md-chatbubble'
+								}
+							/>
+						</IconContainer>
+					</Touchable>
+				</IconsContainer>
+				<Touchable>
+					<Bold>{likeCount === 1 ? '1 like' : `${likeCount} likes`}</Bold>
+				</Touchable>
+				<Caption>
+					<Bold>{user.username}</Bold> {caption}
+				</Caption>
+				<Touchable>
+					<CommentCount>See all {comments.length} comments</CommentCount>
+				</Touchable>
+			</InfoContainer>
+		</Container>
+	);
 };

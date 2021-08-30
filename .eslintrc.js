@@ -31,5 +31,6 @@ module.exports = {
     'react/display-name': 'off',
     'react/prop-types': 'off',
     'prettier/prettier': 'error',
+    '@typescript-eslint/no-unused-vars': 'warn',
   },
 };

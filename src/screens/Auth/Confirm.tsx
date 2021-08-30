@@ -26,58 +26,58 @@ type ParamList = {
 };
 
 export const Confirm = ({
-  navigation,
-  route,
+	navigation,
+	route,
 }: {
   route: RouteProp<ParamList, AuthNavigationRoutes.CONFIRM>;
   navigation: StackNavigationProp<{}>;
 }) => {
-  const confirmInput = useInput("");
-  const logIn = useLogUserIn();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [confirmSecretMutation] = useMutation(CONFIRM_SECRET, {
-    variables: {
-      secret: confirmInput.value,
-      email: route.params.email,
-    },
-  });
+	const confirmInput = useInput('');
+	const logIn = useLogUserIn();
+	const [loading, setLoading] = useState<boolean>(false);
+	const [confirmSecretMutation] = useMutation(CONFIRM_SECRET, {
+		variables: {
+			secret: confirmInput.value,
+			email: route.params.email,
+		},
+	});
 
-  const handleConfirm = async () => {
-    const { value } = confirmInput;
-    if (value === "" || !value.includes(" ")) {
-      return Alert.alert("Invalid secret");
-    }
-    try {
-      setLoading(true);
-      const {
-        data: { confirmSecret },
-      } = await confirmSecretMutation();
-      if (confirmSecret !== "" || confirmSecret !== false) {
-        logIn(confirmSecret);
-      } else {
-        Alert.alert("Wrong secret");
-      }
-    } catch (e) {
-      Alert.alert("Can't confirm secret");
-    } finally {
-      setLoading(false);
-    }
-  };
+	const handleConfirm = async () => {
+		const { value } = confirmInput;
+		if (value === '' || !value.includes(' ')) {
+			return Alert.alert('Invalid secret');
+		}
+		try {
+			setLoading(true);
+			const {
+				data: { confirmSecret },
+			} = await confirmSecretMutation();
+			if (confirmSecret !== '' || confirmSecret !== false) {
+				logIn(confirmSecret);
+			} else {
+				Alert.alert('Wrong secret');
+			}
+		} catch (e) {
+			Alert.alert('Can\'t confirm secret');
+		} finally {
+			setLoading(false);
+		}
+	};
 
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <StyledView
-        style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
-      >
-        <AuthInput
-          {...confirmInput}
-          returnKeyType={"send"}
-          placeholder="Secret"
-          onSubmitEditing={handleConfirm}
-          autoCorrect={false}
-        />
-        <AuthButton loading={loading} text="Confirm" onPress={handleConfirm} />
-      </StyledView>
-    </TouchableWithoutFeedback>
-  );
+	return (
+		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+			<StyledView
+				style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}
+			>
+				<AuthInput
+					{...confirmInput}
+					returnKeyType={'send'}
+					placeholder="Secret"
+					onSubmitEditing={handleConfirm}
+					autoCorrect={false}
+				/>
+				<AuthButton loading={loading} text="Confirm" onPress={handleConfirm} />
+			</StyledView>
+		</TouchableWithoutFeedback>
+	);
 };

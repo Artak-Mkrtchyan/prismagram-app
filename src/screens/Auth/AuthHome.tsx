@@ -27,20 +27,20 @@ const LoginLinkText = styled.Text`
 `;
 
 export const AuthHome = ({
-  navigation,
+	navigation,
 }: {
   navigation: StackNavigationProp<{}>;
 }) => (
-  <View>
-    <Image resizeMode="contain" source={require("../../assets/logo.png")} />
-    <AuthButton
-      text="Create New Account"
-      onPress={() => navigation.navigate(AuthNavigationRoutes.SIGNUP)}
-    />
-    <Touchable onPress={() => navigation.navigate(AuthNavigationRoutes.LOGIN)}>
-      <LoginLink>
-        <LoginLinkText>Login</LoginLinkText>
-      </LoginLink>
-    </Touchable>
-  </View>
+	<View>
+		<Image resizeMode="contain" source={require('../../assets/logo.png')} />
+		<AuthButton
+			text="Create New Account"
+			onPress={() => navigation.navigate(AuthNavigationRoutes.SIGNUP)}
+		/>
+		<Touchable onPress={() => navigation.navigate(AuthNavigationRoutes.LOGIN)}>
+			<LoginLink>
+				<LoginLinkText>Login</LoginLinkText>
+			</LoginLink>
+		</Touchable>
+	</View>
 );

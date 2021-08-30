@@ -25,67 +25,67 @@ type ParamList = {
 };
 
 export const Login = ({
-  navigation,
-  route,
+	navigation,
+	route,
 }: {
   route: RouteProp<ParamList, AuthNavigationRoutes.LOGIN>;
   navigation: StackNavigationProp<{}>;
 }) => {
-  const emailInput = useInput("");
-  console.log(route);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [requestSecretMutation] = useMutation(LOG_IN, {
-    variables: {
-      email: emailInput.value,
-    },
-  });
+	const emailInput = useInput('');
+	console.log(route);
+	const [loading, setLoading] = useState<boolean>(false);
+	const [requestSecretMutation] = useMutation(LOG_IN, {
+		variables: {
+			email: emailInput.value,
+		},
+	});
 
-  const handleLogin = async () => {
-    const { value } = emailInput;
-    const emailRegex =
+	const handleLogin = async () => {
+		const { value } = emailInput;
+		const emailRegex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (value === "") {
-      return Alert.alert("Email can't be empty");
-    } else if (!value.includes("@") || !value.includes(".")) {
-      return Alert.alert("Please write an email");
-    } else if (!emailRegex.test(value)) {
-      return Alert.alert("That email is invalid");
-    }
-    try {
-      setLoading(true);
-      const {
-        data: { requestSecret },
-      } = await requestSecretMutation();
-      if (requestSecret) {
-        Alert.alert("Check your email");
-        navigation.navigate(AuthNavigationRoutes.CONFIRM, { email: value });
-      } else {
-        Alert.alert("Account not found");
-        navigation.navigate(AuthNavigationRoutes.SIGNUP, { email: value });
-      }
-    } catch (e) {
-      console.warn(e);
-      Alert.alert("Can't login now");
-    } finally {
-      setLoading(false);
-    }
-  };
+		if (value === '') {
+			return Alert.alert('Email can\'t be empty');
+		} else if (!value.includes('@') || !value.includes('.')) {
+			return Alert.alert('Please write an email');
+		} else if (!emailRegex.test(value)) {
+			return Alert.alert('That email is invalid');
+		}
+		try {
+			setLoading(true);
+			const {
+				data: { requestSecret },
+			} = await requestSecretMutation();
+			if (requestSecret) {
+				Alert.alert('Check your email');
+				navigation.navigate(AuthNavigationRoutes.CONFIRM, { email: value });
+			} else {
+				Alert.alert('Account not found');
+				navigation.navigate(AuthNavigationRoutes.SIGNUP, { email: value });
+			}
+		} catch (e) {
+			console.warn(e);
+			Alert.alert('Can\'t login now');
+		} finally {
+			setLoading(false);
+		}
+	};
 
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <StyledView
-        style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
-      >
-        <AuthInput
-          {...emailInput}
-          returnKeyType={"send"}
-          keyboardType="email-address"
-          placeholder="Email"
-          onSubmitEditing={handleLogin}
-          autoCorrect={false}
-        />
-        <AuthButton loading={loading} text="Log In" onPress={handleLogin} />
-      </StyledView>
-    </TouchableWithoutFeedback>
-  );
+	return (
+		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+			<StyledView
+				style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}
+			>
+				<AuthInput
+					{...emailInput}
+					returnKeyType={'send'}
+					keyboardType="email-address"
+					placeholder="Email"
+					onSubmitEditing={handleLogin}
+					autoCorrect={false}
+				/>
+				<AuthButton loading={loading} text="Log In" onPress={handleLogin} />
+			</StyledView>
+		</TouchableWithoutFeedback>
+	);
 };

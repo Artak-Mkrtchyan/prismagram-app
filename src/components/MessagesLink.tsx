@@ -10,18 +10,18 @@ const Container = styled.TouchableOpacity`
 `;
 
 export const MessagesLink = (props: any) => {
-  const { navigation } = props;
-  return (
-    <View>
-      <Container
-        onPress={() => {
-          navigation.navigate(MainNavigationRoutes.MESSAGES_PAGE);
-        }}
-      >
-        <NavIcon
-          name={Platform.OS === "ios" ? "ios-paper-plane" : "md-paper-plane"}
-        />
-      </Container>
-    </View>
-  );
+	const { navigation } = props;
+	return (
+		<View>
+			<Container
+				onPress={() => {
+					navigation.navigate(MainNavigationRoutes.MESSAGES_PAGE);
+				}}
+			>
+				<NavIcon
+					name={Platform.OS === 'ios' ? 'ios-paper-plane' : 'md-paper-plane'}
+				/>
+			</Container>
+		</View>
+	);
 };
