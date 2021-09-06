@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	KeyboardTypeOptions, NativeSyntheticEvent, ReturnKeyTypeOptions, TextInputEndEditingEventData
+    KeyboardTypeOptions, NativeSyntheticEvent, ReturnKeyTypeOptions, TextInputEndEditingEventData
 } from 'react-native';
 import { constants } from 'src/constants/constants';
 import styled from 'styled-components/native';
@@ -18,14 +18,14 @@ const TextInput = styled.TextInput`
 `;
 
 export const AuthInput = ({
-	placeholder,
-	value,
-	keyboardType = 'default',
-	autoCapitalize = 'none',
-	returnKeyType = 'none',
-	onChange,
-	autoCorrect = true,
-	onSubmitEditing = () => null,
+  placeholder,
+  value,
+  keyboardType = 'default',
+  autoCapitalize = 'none',
+  returnKeyType = 'none',
+  onChange,
+  autoCorrect = true,
+  onSubmitEditing = () => null,
 }: {
   placeholder: string;
   value: string;
@@ -34,22 +34,20 @@ export const AuthInput = ({
   returnKeyType?: ReturnKeyTypeOptions;
   autoCorrect?: boolean;
   onChange: (text: string) => void;
-  onSubmitEditing?: (
-    e: NativeSyntheticEvent<TextInputEndEditingEventData>
-  ) => void;
+  onSubmitEditing?: (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void;
 }) => {
-	return (
-		<Container>
-			<TextInput
-				onChangeText={onChange}
-				returnKeyType={returnKeyType}
-				keyboardType={keyboardType}
-				placeholder={placeholder}
-				autoCapitalize={autoCapitalize}
-				onSubmitEditing={onSubmitEditing}
-				value={value}
-				autoCorrect={autoCorrect}
-			/>
-		</Container>
-	);
+  return (
+    <Container>
+      <TextInput
+        onChangeText={onChange}
+        returnKeyType={returnKeyType}
+        keyboardType={keyboardType}
+        placeholder={placeholder}
+        autoCapitalize={autoCapitalize}
+        onSubmitEditing={onSubmitEditing}
+        value={value}
+        autoCorrect={autoCorrect}
+      />
+    </Container>
+  );
 };

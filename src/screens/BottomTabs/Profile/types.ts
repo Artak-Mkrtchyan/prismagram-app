@@ -1,4 +1,4 @@
-import { BottomTabNavigationRoutes, BottomTabStackParamList } from 'src/navigation/config';
+import { BottomTabNavigationRoutes } from 'src/navigation/config';
 
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -7,10 +7,7 @@ type ParamList = {
   [BottomTabNavigationRoutes.PROFILE]: { username: string };
 };
 
-export type ProfileScreenRouteParamList = RouteProp<
-  ParamList,
-  BottomTabNavigationRoutes.PROFILE
->;
+export type ProfileScreenRouteParamList = RouteProp<ParamList, BottomTabNavigationRoutes.PROFILE>;
 
 export type ProfileScreenStackParamList = {
   [BottomTabNavigationRoutes.PROFILE]: undefined;

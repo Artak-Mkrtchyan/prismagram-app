@@ -1,7 +1,8 @@
 import React from 'react';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native';
 import styled from 'styled-components/native';
+
+
 
 const StyledView = styled.View`
   justify-content: center;
@@ -10,8 +11,7 @@ const StyledView = styled.View`
 `;
 
 export const UploadPhoto = () => (
-	<StyledView>
-		<Text>UploadPhoto</Text>
-    
-	</StyledView>
+  <StyledView>
+    <Text>UploadPhoto</Text>
+  </StyledView>
 );
