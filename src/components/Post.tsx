@@ -3,7 +3,7 @@ import { Image, Platform } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { constants } from 'src/constants/constants';
 import { BottomTabNavigationRoutes } from 'src/navigation/config';
-import { theme } from 'src/styles';
+import { colors } from 'src/styles';
 import styled from 'styled-components/native';
 
 import { gql, useMutation } from '@apollo/client';
@@ -148,7 +148,7 @@ export const Post = ({
             <IconContainer>
               <Ionicons
                 size={24}
-                color={isLiked ? theme.redColor : theme.blackColor}
+                color={isLiked ? colors.redColor : colors.blackColor}
                 name={isLiked ? 'ios-heart' : 'md-heart'}
               />
             </IconContainer>
@@ -156,7 +156,7 @@ export const Post = ({
           <Touchable>
             <IconContainer>
               <Ionicons
-                color={theme.blackColor}
+                color={colors.blackColor}
                 size={24}
                 name={Platform.OS === 'ios' ? 'ios-chatbubble' : 'md-chatbubble'}
               />

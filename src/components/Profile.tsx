@@ -3,7 +3,7 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Post } from 'src/components/Post';
 import { SquarePhoto } from 'src/components/SquarePhoto';
 import { constants } from 'src/constants/constants';
-import { theme } from 'src/styles';
+import { colors } from 'src/styles';
 import styled from 'styled-components/native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -33,7 +33,7 @@ const Bold = styled.Text`
 const StatName = styled.Text`
   margin-top: 5px;
   font-size: 12px;
-  color: ${theme.darkGreyColor};
+  color: ${colors.darkGreyColor};
 `;
 
 const ProfileMeta = styled.View`
@@ -45,7 +45,7 @@ const Bio = styled.Text``;
 
 const ButtonContainer = styled.View`
   padding-vertical: 5px;
-  border: 1px solid ${theme.lightGreyColor};
+  border: 1px solid ${colors.lightGreyColor};
   flex-direction: row;
   margin-top: 30px;
 `;
@@ -140,7 +140,7 @@ export const ProfileComponent = ({
         <TouchableOpacity onPress={toggleGrid}>
           <Button>
             <Ionicons
-              color={isGrid ? theme.blackColor : theme.darkGreyColor}
+              color={isGrid ? colors.blackColor : colors.darkGreyColor}
               size={32}
               name={Platform.OS === 'ios' ? 'ios-grid' : 'md-grid'}
             />
@@ -149,7 +149,7 @@ export const ProfileComponent = ({
         <TouchableOpacity onPress={toggleGrid}>
           <Button>
             <Ionicons
-              color={!isGrid ? theme.blackColor : theme.darkGreyColor}
+              color={!isGrid ? colors.blackColor : colors.darkGreyColor}
               size={32}
               name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'}
             />

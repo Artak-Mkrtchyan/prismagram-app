@@ -3,7 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { Layout } from 'src/constants/Layout';
 import styled from 'styled-components/native';
 
-import { theme } from '../styles';
+import { colors } from '../styles';
 
 const Container = styled.View`
   flex: 1;
@@ -15,7 +15,7 @@ const Container = styled.View`
 export const Loader = () => {
   return (
     <Container>
-      <ActivityIndicator color={theme.darkGreyColor} />
+      <ActivityIndicator color={colors.darkGreyColor} />
     </Container>
   );
 };

@@ -3,9 +3,13 @@ import { ActivityIndicator } from 'react-native';
 import { constants } from 'src/constants/constants';
 import styled from 'styled-components/native';
 
+interface ContainerProps {
+  readonly bgColor?: string;
+}
+
 const Touchable = styled.TouchableOpacity``;
-const Container = styled.View`
-  background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.blueColor)};
+const Container = styled.View<ContainerProps>`
+  background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.blueColor)};
   padding: 10px;
   margin: 0px 50px;
   border-radius: 4px;

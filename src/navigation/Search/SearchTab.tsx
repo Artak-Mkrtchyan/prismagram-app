@@ -5,7 +5,7 @@ import { SearchBar } from 'src/components/SearchBar';
 import { BottomTabNavigationRoutes, stackStyles } from 'src/navigation/config';
 import { SearchScreen } from 'src/screens/BottomTabs/Search';
 import { DetailScreen } from 'src/screens/Detail';
-import { theme } from 'src/styles';
+import { colors } from 'src/styles';
 
 import { useNavigation } from '@react-navigation/core';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
@@ -57,7 +57,7 @@ export const SearchStackNavigator = (): JSX.Element => {
         component={DetailScreen}
         options={{
           headerBackTitleVisible: false,
-          headerTintColor: theme.blackColor,
+          headerTintColor: colors.blackColor,
         }}></StackNavigation.Screen>
       <StackNavigation.Screen name="Profile" component={ProfileComponent} />
     </StackNavigation.Navigator>

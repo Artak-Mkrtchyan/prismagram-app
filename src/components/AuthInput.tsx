@@ -12,8 +12,8 @@ const Container = styled.View`
 const TextInput = styled.TextInput`
   width: ${constants.width / 2}px;
   padding: 10px;
-  background-color: ${(props) => props.theme.greyColor};
-  border: 1px solid ${(props) => props.theme.lightGreyColor};
+  background-color: ${(props) => props.theme.colors.greyColor};
+  border: 1px solid ${(props) => props.theme.colors.lightGreyColor};
   border-radius: 4px;
 `;
 

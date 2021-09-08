@@ -1,4 +1,14 @@
-export const theme = {
+export type Colors = {
+  blackColor: string;
+  greyColor: string;
+  darkGreyColor: string;
+  lightGreyColor: string;
+  redColor: string;
+  blueColor: string;
+  darkBlueColor: string;
+};
+
+export const colors: Colors = {
   blackColor: '#262626',
   greyColor: '#F9F9F9',
   darkGreyColor: '#999',
@@ -6,4 +16,8 @@ export const theme = {
   redColor: '#ED4956',
   blueColor: '#3897f0',
   darkBlueColor: '#003569',
-} as const;
+};
+
+export const theme = {
+  colors,
+};

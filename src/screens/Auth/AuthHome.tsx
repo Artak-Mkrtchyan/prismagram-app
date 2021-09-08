@@ -22,7 +22,7 @@ const Touchable = styled.TouchableOpacity``;
 
 const LoginLink = styled.View``;
 const LoginLinkText = styled.Text`
-  color: ${(props) => props.theme.blueColor};
+  color: ${(props) => props.theme.colors.blueColor};
   margin-top: 20px;
 `;
 

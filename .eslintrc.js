@@ -29,7 +29,6 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'react/display-name': 'off',
     'react/prop-types': 'off',
-    'prettier/prettier': 'error',
     '@typescript-eslint/no-unused-vars': 'warn',
   },
 };

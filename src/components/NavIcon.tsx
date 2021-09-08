@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Ionicons } from '@expo/vector-icons';
 
-import { theme } from '../styles';
+import { colors } from '../styles';
 
 export const NavIcon = ({
   focused = true,
   name,
-  color = theme.blackColor,
+  color = colors.blackColor,
   size = 30,
 }: {
   focused?: boolean;
@@ -26,4 +26,4 @@ export const NavIcon = ({
     | 'md-person';
   color?: string;
   size?: number;
-}) => <Ionicons name={name} color={focused ? color : theme.darkGreyColor} size={size} />;
+}) => <Ionicons name={name} color={focused ? color : colors.darkGreyColor} size={size} />;

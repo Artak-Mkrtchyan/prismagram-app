@@ -2012,10 +2012,10 @@
     "@types/react-native" "*"
     "@types/styled-components" "*"
 
-"@types/styled-components@*":
-  "integrity" "sha512-sTjc0+gMl08JvOHchQKgEGbbiSexSvWg5khUNSH4kosb7Tl4782AtfWMkAhQmeXMg2vIn6PthGVHFW+U/Dpihg=="
-  "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.12.tgz"
-  "version" "5.1.12"
+"@types/styled-components@*", "@types/styled-components@^5.1.14":
+  "integrity" "sha512-d6P1/tyNytqKwam3cQXq7a9uPtovc/mdAs7dBiz1YbDdNIT3X4WmuFU78YdSYh84TXVuhOwezZ3EeKuNBhwsHQ=="
+  "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.14.tgz"
+  "version" "5.1.14"
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"

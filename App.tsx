@@ -3,9 +3,7 @@ import { PersistedData } from 'apollo3-cache-persist/lib/types';
 import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { apolloClientOptions } from 'src/apollo';
 import { AuthProvider } from 'src/AuthContext';
 import { NavController } from 'src/components/NavController';
@@ -26,7 +24,7 @@ export default function App() {
       await Font.loadAsync({
         ...Ionicons.font,
       });
-      await Asset.loadAsync([require("src/assets/logo.png")]);
+      await Asset.loadAsync([require('src/assets/logo.png')]);
 
       const cache = new InMemoryCache({});
 
@@ -37,14 +35,14 @@ export default function App() {
         >,
       });
 
-      const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
+      const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
 
       const client = new ApolloClient({
         ...apolloClientOptions,
         cache: new InMemoryCache(),
       });
 
-      console.log("isLoggedIn", Boolean(isLoggedIn));
+      console.log('isLoggedIn', Boolean(isLoggedIn));
       setIsLoggedIn(Boolean(isLoggedIn));
 
       setClient(client);
