@@ -1,5 +1,5 @@
 export const stackStyles = {
-	backgroundColor: '#FAFAFA',
+  backgroundColor: '#FAFAFA',
 };
 
 export type BottomTabStackParamList = {
@@ -34,6 +34,17 @@ export enum AuthNavigationRoutes {
   LOGIN = 'Login',
   CONFIRM = 'Confirm',
 }
+
+export type AuthNavigationParamList = {
+  [AuthNavigationRoutes.HOME]: {};
+  [AuthNavigationRoutes.SIGNUP]: {};
+  [AuthNavigationRoutes.LOGIN]: {
+    email?: string;
+  };
+  [AuthNavigationRoutes.CONFIRM]: {
+    email: string;
+  };
+};
 
 export enum MessageNavigationRoutes {
   MESSAGE = 'Message',

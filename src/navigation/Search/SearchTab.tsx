@@ -16,7 +16,7 @@ type ParamList = { [BottomTabNavigationRoutes.SEARCH]: { term: string } };
 
 export type SearchStackProp = StackNavigationProp<ParamList, BottomTabNavigationRoutes.SEARCH>;
 
-export const SearchStackNavigator = (): JSX.Element => {
+export const SearchStackNavigator = () => {
   const navigation = useNavigation<SearchStackProp>();
   const [searchInput, setSearchInput] = useState<string>('');
   const [fetchTrigger, setFetchTrigger] = useState(false);

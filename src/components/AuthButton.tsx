@@ -31,7 +31,7 @@ export const AuthButton = ({
   onPress: () => void;
   bgColor?: string;
   loading?: boolean;
-}): JSX.Element => {
+}) => {
   return (
     <Touchable disabled={loading} onPress={() => onPress()}>
       <Container bgColor={bgColor}>

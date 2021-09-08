@@ -5,10 +5,11 @@ import { Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { AuthButton } from 'src/components/AuthButton';
 import { AuthInput } from 'src/components/AuthInput';
 import { useInput } from 'src/hooks/useInput';
-import { AuthNavigationRoutes } from 'src/navigation/config';
+import { AuthNavigationParamList, AuthNavigationRoutes } from 'src/navigation/config';
 import styled from 'styled-components/native';
 
 import { useMutation } from '@apollo/client';
+import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { CREATE_ACCOUNT } from './AuthQueries';
@@ -27,7 +28,13 @@ const FBContainer = styled.View`
   border-style: solid;
 `;
 
-export const SignUp = ({ navigation }: { navigation: StackNavigationProp<{}> }) => {
+export type SignUpStackProp = StackNavigationProp<
+  AuthNavigationParamList,
+  AuthNavigationRoutes.SIGNUP
+>;
+
+export const SignUp = () => {
+  const navigation = useNavigation<SignUpStackProp>();
   const emailInput = useInput('');
   const usernameInput = useInput('');
   const firstNameInput = useInput('');

@@ -10,7 +10,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-export const ProfileScreen = (): JSX.Element => {
+export const ProfileScreen = () => {
   const navigation = useNavigation<ProfileScreenProp>();
   const route = useRoute<ProfileScreenRouteParamList>();
 

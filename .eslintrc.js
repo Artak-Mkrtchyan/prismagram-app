@@ -30,5 +30,6 @@ module.exports = {
     'react/display-name': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };

@@ -14,7 +14,7 @@ export const SquarePhoto = ({
     url: string;
   }[];
   id: string;
-}): JSX.Element => {
+}) => {
   const navigation = useNavigation();
 
   return (

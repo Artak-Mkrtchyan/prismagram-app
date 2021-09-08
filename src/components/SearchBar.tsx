@@ -11,7 +11,7 @@ export const SearchBar = ({
   onChange: (text: string) => void;
   value: string;
   onSubmit: (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void;
-}): JSX.Element => (
+}) => (
   <TextInput
     style={{
       width: constants.width - 40,
