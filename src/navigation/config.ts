@@ -2,14 +2,6 @@ export const stackStyles = {
   backgroundColor: '#FAFAFA',
 };
 
-export type BottomTabStackParamList = {
-  Home: undefined;
-  Search: undefined;
-  Add: undefined;
-  Notification: undefined;
-  Profile: undefined;
-};
-
 export enum BottomTabNavigationRoutes {
   HOME = 'Home',
   SEARCH = 'Search',
@@ -17,6 +9,14 @@ export enum BottomTabNavigationRoutes {
   NOTIFICATION = 'Notification',
   PROFILE = 'Profile',
 }
+
+export type BottomTabStackParamList = {
+  [BottomTabNavigationRoutes.HOME]: {};
+  [BottomTabNavigationRoutes.SEARCH]: { term: string };
+  [BottomTabNavigationRoutes.ADD]: {};
+  [BottomTabNavigationRoutes.NOTIFICATION]: {};
+  [BottomTabNavigationRoutes.PROFILE]: { username: string };
+};
 
 export enum CommonNavigationRoutes {
   DETAIL = 'Detail',
@@ -27,6 +27,12 @@ export enum MainNavigationRoutes {
   PHOTO = 'Photo',
   MESSAGES_PAGE = 'Messages_page',
 }
+
+export type MainNavigationParamList = {
+  [MainNavigationRoutes.BOTTOM_TABS]: {};
+  [MainNavigationRoutes.PHOTO]: {};
+  [MainNavigationRoutes.MESSAGES_PAGE]: {};
+};
 
 export enum AuthNavigationRoutes {
   HOME = 'Home',

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Platform } from 'react-native';
 import { ProfileComponent } from 'src/components/Profile';
 import { SearchBar } from 'src/components/SearchBar';
-import { BottomTabNavigationRoutes, stackStyles } from 'src/navigation/config';
+import {
+    BottomTabNavigationRoutes, BottomTabStackParamList, stackStyles
+} from 'src/navigation/config';
 import { SearchScreen } from 'src/screens/BottomTabs/Search';
 import { DetailScreen } from 'src/screens/Detail';
 import { colors } from 'src/styles';
@@ -12,9 +14,10 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 
 const StackNavigation = createStackNavigator();
 
-type ParamList = { [BottomTabNavigationRoutes.SEARCH]: { term: string } };
-
-export type SearchStackProp = StackNavigationProp<ParamList, BottomTabNavigationRoutes.SEARCH>;
+export type SearchStackProp = StackNavigationProp<
+  BottomTabStackParamList,
+  BottomTabNavigationRoutes.SEARCH
+>;
 
 export const SearchStackNavigator = () => {
   const navigation = useNavigation<SearchStackProp>();

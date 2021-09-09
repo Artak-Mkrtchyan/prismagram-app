@@ -4,14 +4,14 @@ import { Loader } from 'src/components/Loader';
 import { ProfileComponent } from 'src/components/Profile';
 import { GET_USER } from 'src/screens/BottomTabs/Profile/queries';
 import {
-    ProfileScreenProp, ProfileScreenRouteParamList
+    ProfileScreenRouteParamList, ProfileScreenStackProp
 } from 'src/screens/BottomTabs/Profile/types';
 
 import { useQuery } from '@apollo/client';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 export const ProfileScreen = () => {
-  const navigation = useNavigation<ProfileScreenProp>();
+  const navigation = useNavigation<ProfileScreenStackProp>();
   const route = useRoute<ProfileScreenRouteParamList>();
 
   const { loading, data } = useQuery(GET_USER, {

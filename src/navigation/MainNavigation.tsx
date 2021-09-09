@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { MainNavigationRoutes } from './config';
 import { MessageNavigation } from './MessageNavigation';
 import { PhotoNavigation } from './PhotoNavigation';
-import { TabNavigation } from './TabNavigation';
+import { TabNavigation } from './TabNavigation/TabNavigation';
 
 const StackNavigation = createStackNavigator();
 
