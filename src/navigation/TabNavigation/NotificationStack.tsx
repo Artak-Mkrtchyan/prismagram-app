@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import { Logo } from 'src/components/Logo';
 import { MessagesLink } from 'src/components/MessagesLink';
 import { Notification } from 'src/screens/BottomTabs/Notification';
 
@@ -16,13 +17,7 @@ export const NotificationStackNavigator = () => {
         options={({ navigation }) => ({
           headerRight: () => <MessagesLink navigation={navigation} />,
           headerStyle: { backgroundColor: stackStyles.backgroundColor },
-          headerTitle: () => (
-            <Image
-              style={{ height: 35 }}
-              resizeMode="contain"
-              source={require('../assets/logo.png')}
-            />
-          ),
+          headerTitle: () => <Logo />,
           headerTitleContainerStyle: {
             width: Platform.OS === 'ios' ? '60%' : '75%',
             alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start',

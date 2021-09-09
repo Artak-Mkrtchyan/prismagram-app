@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import { Logo } from 'src/components/Logo';
 import { MessagesLink } from 'src/components/MessagesLink';
 import { NavIcon } from 'src/components/NavIcon';
 import { SearchStackNavigator } from 'src/navigation/Search/SearchTab';
@@ -67,13 +68,7 @@ export const TabNavigation = () => {
           tabBarLabel: () => {
             return null;
           },
-          headerTitle: () => (
-            <Image
-              style={{ height: 35 }}
-              resizeMode="contain"
-              source={require('../assets/logo.png')}
-            />
-          ),
+          headerTitle: () => <Logo />,
           headerRight: () => <MessagesLink navigation={navigation} />,
           headerStyle: { backgroundColor: stackStyles.backgroundColor },
           headerTitleContainerStyle: {
