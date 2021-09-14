@@ -25,6 +25,7 @@ export type TabScreenRouteParamList = RouteProp<
 
 export const TabNavigation = () => {
   const route = useRoute<TabScreenRouteParamList>();
+
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
@@ -125,6 +126,7 @@ export const TabNavigation = () => {
             alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start',
           },
         }}
+        // initialParams={{ username: route.params}}
         component={ProfileStackNavigator}
       />
     </BottomTabNavigator.Navigator>

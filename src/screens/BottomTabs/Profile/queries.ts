@@ -10,3 +10,12 @@ export const GET_USER = gql`
   }
   ${USER_FRAGMENT}
 `;
+
+export const ME = gql`
+  {
+    me {
+      ...UserParts
+    }
+  }
+  ${USER_FRAGMENT}
+`;

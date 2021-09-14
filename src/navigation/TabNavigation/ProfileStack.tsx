@@ -5,13 +5,21 @@ import { MessagesLink } from 'src/components/MessagesLink';
 import { ProfileScreen } from 'src/screens/BottomTabs/Profile/Profile';
 import { ProfileScreenStackProp } from 'src/screens/BottomTabs/Profile/types';
 
+import { RouteProp, useRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { stackStyles } from '../config';
+import { BottomTabNavigationRoutes, BottomTabStackParamList, stackStyles } from '../config';
 
 const StackNavigation = createStackNavigator();
 
+export type ProfileStackRouteParamList = RouteProp<
+  BottomTabStackParamList,
+  BottomTabNavigationRoutes.PROFILE
+>;
+
 export const ProfileStackNavigator = () => {
+  const route = useRoute<ProfileStackRouteParamList>();
+
   return (
     <StackNavigation.Navigator>
       <StackNavigation.Screen
