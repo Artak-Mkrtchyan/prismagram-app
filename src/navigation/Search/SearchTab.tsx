@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Platform } from 'react-native';
-import { ProfileComponent } from 'src/components/Profile';
 import { SearchBar } from 'src/components/SearchBar';
 import {
     BottomTabNavigationRoutes, BottomTabStackParamList, stackStyles
@@ -11,6 +10,8 @@ import { colors } from 'src/styles';
 
 import { useNavigation } from '@react-navigation/core';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+
+import { UserDetail } from '../UserDetail';
 
 const StackNavigation = createStackNavigator();
 
@@ -62,7 +63,7 @@ export const SearchStackNavigator = () => {
           headerBackTitleVisible: false,
           headerTintColor: colors.blackColor,
         }}></StackNavigation.Screen>
-      <StackNavigation.Screen name="Profile" component={ProfileComponent} />
+      <StackNavigation.Screen name="UserDetail" component={UserDetail} />
     </StackNavigation.Navigator>
   );
 };

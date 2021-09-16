@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Image, Platform } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { constants } from 'src/constants/constants';
-import { BottomTabNavigationRoutes } from 'src/navigation/config';
+import { CommonNavigationRoutes } from 'src/navigation/config';
 import { colors } from 'src/styles';
 import styled from 'styled-components/native';
 
@@ -112,7 +112,7 @@ export const Post = ({
       <Header>
         <Touchable
           onPress={() =>
-            navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
+            navigation.navigate(CommonNavigationRoutes.USER_DETAIL, {
               username: user.username,
             })
           }>
@@ -123,7 +123,7 @@ export const Post = ({
         </Touchable>
         <Touchable
           onPress={() =>
-            navigation.navigate(BottomTabNavigationRoutes.PROFILE, {
+            navigation.navigate(CommonNavigationRoutes.USER_DETAIL, {
               username: user.username,
             })
           }>

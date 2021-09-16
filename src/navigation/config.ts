@@ -20,7 +20,13 @@ export type BottomTabStackParamList = {
 
 export enum CommonNavigationRoutes {
   DETAIL = 'Detail',
+  USER_DETAIL = 'UserDetail',
 }
+
+export type CommonStackParamList = {
+  [CommonNavigationRoutes.DETAIL]: {};
+  [CommonNavigationRoutes.USER_DETAIL]: { username: string };
+};
 
 export enum MainNavigationRoutes {
   BOTTOM_TABS = 'Bottom_tabs',
