@@ -6,7 +6,7 @@ import { UploadPhoto } from 'src/screens/Photo/UploadPhoto';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { PhotoNavigationRoutes, PhotoTabNavigationRoutes } from './config';
+import { PhotoParamList, PhotoTabNavigationRoutes, UploadPhotoNavigationRoutes } from './config';
 
 const MaterialTopTabNavigator = createMaterialTopTabNavigator();
 
@@ -25,13 +25,16 @@ const PhotoTab = () => {
   );
 };
 
-const StackNavigation = createStackNavigator();
+const StackNavigation = createStackNavigator<PhotoParamList>();
 
 export const PhotoNavigation = () => {
   return (
     <StackNavigation.Navigator screenOptions={{ presentation: 'modal', headerShown: false }}>
-      <StackNavigation.Screen name={PhotoNavigationRoutes.PHOTO_TAB} component={PhotoTab} />
-      <StackNavigation.Screen name={PhotoNavigationRoutes.UPLOAD_PHOTO} component={UploadPhoto} />
+      <StackNavigation.Screen name={UploadPhotoNavigationRoutes.PHOTO_TAB} component={PhotoTab} />
+      <StackNavigation.Screen
+        name={UploadPhotoNavigationRoutes.UPLOAD_PHOTO}
+        component={UploadPhoto}
+      />
     </StackNavigation.Navigator>
   );
 };

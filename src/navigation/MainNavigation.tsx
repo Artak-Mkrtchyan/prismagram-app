@@ -3,12 +3,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MainNavigationRoutes } from './config';
+import { MainNavigationRoutes, RootNavigationParamList } from './config';
 import { MessageNavigation } from './MessageNavigation';
 import { PhotoNavigation } from './PhotoNavigation';
 import { TabNavigation } from './TabNavigation/TabNavigation';
 
-const StackNavigation = createStackNavigator();
+const StackNavigation = createStackNavigator<RootNavigationParamList>();
 
 export const MainNavigation = () => {
   return (

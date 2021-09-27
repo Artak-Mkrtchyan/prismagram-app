@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { Logo } from 'src/components/Logo';
 import { MessagesLink } from 'src/components/MessagesLink';
 import { NavIcon } from 'src/components/NavIcon';
-import { SearchStackNavigator } from 'src/navigation/Search/SearchTab';
+import { SearchStackNavigator } from 'src/navigation/Search/SearchStack';
 import { HomeStackNavigator } from 'src/navigation/TabNavigation/HomeStack';
 import { NotificationStackNavigator } from 'src/navigation/TabNavigation/NotificationStack';
 import { ProfileStackNavigator } from 'src/navigation/TabNavigation/ProfileStack';
@@ -13,13 +13,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import {
-    BottomTabNavigationRoutes, MainNavigationParamList, MainNavigationRoutes, stackStyles
+    BottomTabNavigationRoutes, BottomTabsParamList, MainNavigationRoutes, RootNavigationParamList,
+    stackStyles
 } from '../config';
 
-const BottomTabNavigator = createBottomTabNavigator();
+const BottomTabNavigator = createBottomTabNavigator<BottomTabsParamList>();
 
 export type TabScreenRouteParamList = RouteProp<
-  MainNavigationParamList,
+  RootNavigationParamList,
   MainNavigationRoutes.BOTTOM_TABS
 >;
 
@@ -84,7 +85,7 @@ export const TabNavigation = () => {
             />
           ),
         })}
-        name="Add"
+        name={BottomTabNavigationRoutes.ADD}
         component={Add}
       />
       <BottomTabNavigator.Screen

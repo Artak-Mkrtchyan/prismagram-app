@@ -9,19 +9,27 @@ import { DetailScreen } from 'src/screens/Detail';
 import { colors } from 'src/styles';
 
 import { useNavigation } from '@react-navigation/core';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 
 import { UserDetail } from '../UserDetail';
+import { SearchStackParamList } from './types';
 
-const StackNavigation = createStackNavigator();
+const StackNavigation = createStackNavigator<SearchStackParamList>();
 
 export type SearchStackProp = StackNavigationProp<
   BottomTabStackParamList,
   BottomTabNavigationRoutes.SEARCH
 >;
 
+export type SearchRouteParamList = RouteProp<
+  BottomTabStackParamList,
+  BottomTabNavigationRoutes.SEARCH
+>;
+
 export const SearchStackNavigator = () => {
   const navigation = useNavigation<SearchStackProp>();
+  const route = useRoute<SearchRouteParamList>();
   const [searchInput, setSearchInput] = useState<string>('');
   const [fetchTrigger, setFetchTrigger] = useState(false);
 
@@ -63,7 +71,13 @@ export const SearchStackNavigator = () => {
           headerBackTitleVisible: false,
           headerTintColor: colors.blackColor,
         }}></StackNavigation.Screen>
-      <StackNavigation.Screen name="UserDetail" component={UserDetail} />
+      <StackNavigation.Screen
+        options={({ route }) => ({
+          title: route.params?.username,
+        })}
+        name="UserDetail"
+        component={UserDetail}
+      />
     </StackNavigation.Navigator>
   );
 };

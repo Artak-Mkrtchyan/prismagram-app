@@ -2,14 +2,14 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { Logo } from 'src/components/Logo';
 import { MessagesLink } from 'src/components/MessagesLink';
-import { ProfileComponent } from 'src/components/Profile';
+import { UserDetail } from 'src/navigation/UserDetail';
 import { Home } from 'src/screens/BottomTabs/Home';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { stackStyles } from '../config';
+import { HomeStackParamList, stackStyles } from '../config';
 
-const StackNavigation = createStackNavigator();
+const StackNavigation = createStackNavigator<HomeStackParamList>();
 
 export const HomeStackNavigator = () => {
   return (
@@ -27,7 +27,14 @@ export const HomeStackNavigator = () => {
         name="HomeStack"
         component={Home}
       />
-      <StackNavigation.Screen name="Profile" component={ProfileComponent} />
+      <StackNavigation.Screen
+        options={({ route }) => ({
+          title: route.params?.username,
+          headerBackTitleVisible: false,
+        })}
+        name="UserDetail"
+        component={UserDetail}
+      />
     </StackNavigation.Navigator>
   );
 };

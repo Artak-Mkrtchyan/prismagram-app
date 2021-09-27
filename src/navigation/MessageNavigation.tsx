@@ -4,9 +4,9 @@ import { Messages } from 'src/screens/Message/Messages';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MessageNavigationRoutes } from './config';
+import { MessageNavigationRoutes, MessagesPageParamList } from './config';
 
-const StackNavigation = createStackNavigator();
+const StackNavigation = createStackNavigator<MessagesPageParamList>();
 
 export const MessageNavigation = () => {
   return (

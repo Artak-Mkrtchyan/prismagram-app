@@ -16,32 +16,26 @@ export const FEED_QUERY = gql`
 `;
 
 export const Home = () => {
-	const [refreshing, setRefreshing] = useState(false);
-	const { loading, data, refetch } = useQuery(FEED_QUERY);
+  const [refreshing, setRefreshing] = useState(false);
+  const { loading, data, refetch } = useQuery(FEED_QUERY);
 
-	const refresh = async () => {
-		try {
-			setRefreshing(true);
-			await refetch();
-		} catch (e) {
-			console.log(e);
-		} finally {
-			setRefreshing(false);
-		}
-	};
-	return (
-		<ScrollView
-			refreshControl={
-				<RefreshControl refreshing={refreshing} onRefresh={refresh} />
-			}
-		>
-			{loading ? (
-				<Loader />
-			) : (
-				data &&
-        data.seeFeed &&
-        data.seeFeed.map((post: any) => <Post key={post.id} {...post} />)
-			)}
-		</ScrollView>
-	);
+  const refresh = async () => {
+    try {
+      setRefreshing(true);
+      await refetch();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+  return (
+    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}>
+      {loading ? (
+        <Loader />
+      ) : (
+        data && data.seeFeed && data.seeFeed.map((post: any) => <Post key={post.id} {...post} />)
+      )}
+    </ScrollView>
+  );
 };
