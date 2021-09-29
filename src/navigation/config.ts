@@ -20,7 +20,12 @@ export type BottomTabsParamList = {
 
 export type PhotoParamList = {
   [UploadPhotoNavigationRoutes.PHOTO_TAB]: NavigatorScreenParams<any>;
-  [UploadPhotoNavigationRoutes.UPLOAD_PHOTO]: NavigatorScreenParams<any>;
+  [UploadPhotoNavigationRoutes.UPLOAD_PHOTO]: { photo: string };
+};
+
+export type UploadPhotoParamList = {
+  [PhotoTabNavigationRoutes.SELECT_PHOTO]: NavigatorScreenParams<any>;
+  [PhotoTabNavigationRoutes.TAKE_PHOTO]: NavigatorScreenParams<any>;
 };
 
 export type MessagesPageParamList = {
@@ -55,13 +60,13 @@ export enum BottomTabNavigationRoutes {
 }
 
 export enum UploadPhotoNavigationRoutes {
-  PHOTO_TAB = 'Photo_tab',
-  UPLOAD_PHOTO = 'Upload_photo',
+  PHOTO_TAB = 'Photo Tab',
+  UPLOAD_PHOTO = 'Upload Photo',
 }
 
 export enum PhotoTabNavigationRoutes {
-  SELECT_PHOTO = 'Select_photo',
-  TAKE_PHOTO = 'Take_photo',
+  SELECT_PHOTO = 'Select',
+  TAKE_PHOTO = 'Take',
 }
 
 export enum MessageNavigationRoutes {
