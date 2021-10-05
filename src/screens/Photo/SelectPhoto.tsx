@@ -34,7 +34,7 @@ const Text = styled.Text`
   font-weight: 600;
 `;
 
-export type SearchStackProp = StackNavigationProp<
+export type PhotoStackProp = StackNavigationProp<
   UploadPhotoParamList,
   PhotoTabNavigationRoutes.SELECT_PHOTO
 >;
@@ -44,7 +44,7 @@ export const SelectPhoto = () => {
   const [hasPermission, setHasPermission] = useState(false);
   const [selected, setSelected] = useState<Asset>();
   const [allPhotos, setAllPhotos] = useState<Asset[]>();
-  const navigation = useNavigation<SearchStackProp>();
+  const navigation = useNavigation<PhotoStackProp>();
 
   const changeSelected = (photo) => {
     setSelected(photo);
@@ -74,6 +74,7 @@ export const SelectPhoto = () => {
   const askPermission = async () => {
     try {
       const status = await request(PERMISSIONS.IOS.CAMERA);
+      console.log('status', status);
       if (status === 'granted') {
         setHasPermission(true);
         getPhotos();
@@ -91,7 +92,7 @@ export const SelectPhoto = () => {
   useEffect(() => {
     askPermission();
   }, []);
-
+  console.log('loading', loading);
   return (
     <View>
       {loading ? (
