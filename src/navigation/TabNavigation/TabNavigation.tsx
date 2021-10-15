@@ -85,6 +85,12 @@ export const TabNavigation = () => {
             />
           ),
         })}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate(MainNavigationRoutes.PHOTO);
+          },
+        })}
         name={BottomTabNavigationRoutes.ADD}
         component={Add}
       />

@@ -41,7 +41,9 @@ const StackNavigation = createStackNavigator<PhotoParamList>();
 
 export const PhotoNavigation = () => {
   return (
-    <StackNavigation.Navigator screenOptions={{ presentation: 'modal', headerShown: false }}>
+    <StackNavigation.Navigator
+      initialRouteName={UploadPhotoNavigationRoutes.PHOTO_TAB}
+      screenOptions={{ presentation: 'modal', headerShown: false }}>
       <StackNavigation.Screen name={UploadPhotoNavigationRoutes.PHOTO_TAB} component={PhotoTab} />
       <StackNavigation.Screen
         name={UploadPhotoNavigationRoutes.UPLOAD_PHOTO}

@@ -29,6 +29,16 @@ const Button = styled.TouchableOpacity`
   border-radius: 5px;
 `;
 
+const ButtonTwo = styled.TouchableOpacity`
+  height: 40px;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: ${colors.blueColor};
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+`;
+
 const Text = styled.Text`
   color: white;
   font-weight: 600;
@@ -52,32 +62,30 @@ export const SelectPhoto = () => {
 
   const onButtonPress = useCallback(() => {
     launchImageLibrary({ selectionLimit: 10 }, ({ assets }) => {
-      console.log(assets);
       if (assets) {
         const [firstPhoto] = assets;
         setSelected(firstPhoto);
         setAllPhotos(assets);
       }
+      setLoading(false);
     });
   }, []);
 
   const getPhotos = () => {
     try {
+      setLoading(true);
       onButtonPress();
     } catch (e) {
       console.log(e);
-    } finally {
-      setLoading(false);
     }
   };
 
   const askPermission = async () => {
     try {
       const status = await request(PERMISSIONS.IOS.CAMERA);
-      console.log('status', status);
       if (status === 'granted') {
         setHasPermission(true);
-        getPhotos();
+        setLoading(false);
       }
     } catch (e) {
       console.log(e);
@@ -90,9 +98,9 @@ export const SelectPhoto = () => {
   };
 
   useEffect(() => {
-    askPermission();
+    void askPermission();
   }, []);
-  console.log('loading', loading);
+
   return (
     <View>
       {loading ? (
@@ -110,24 +118,30 @@ export const SelectPhoto = () => {
                 <Text>Select Photo</Text>
               </Button>
 
-              <ScrollView
-                contentContainerStyle={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                }}>
-                {allPhotos?.map((photo) => (
-                  <TouchableOpacity key={photo.fileName} onPress={() => changeSelected(photo)}>
-                    <Image
-                      source={{ uri: photo.uri }}
-                      style={{
-                        width: constants.width / 3,
-                        height: constants.height / 6,
-                        opacity: photo.fileName === selected?.fileName ? 0.5 : 1,
-                      }}
-                    />
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
+              {allPhotos ? (
+                <ScrollView
+                  contentContainerStyle={{
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                  }}>
+                  {allPhotos.map((photo) => (
+                    <TouchableOpacity key={photo.fileName} onPress={() => changeSelected(photo)}>
+                      <Image
+                        source={{ uri: photo.uri }}
+                        style={{
+                          width: constants.width / 3,
+                          height: constants.height / 6,
+                          opacity: photo.fileName === selected?.fileName ? 0.5 : 1,
+                        }}
+                      />
+                    </TouchableOpacity>
+                  ))}
+                </ScrollView>
+              ) : (
+                <ButtonTwo onPress={getPhotos}>
+                  <Text>Select Photos from Gallery </Text>
+                </ButtonTwo>
+              )}
             </>
           ) : null}
         </View>
